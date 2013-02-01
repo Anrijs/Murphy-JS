@@ -6,23 +6,23 @@ for(var i=0;i<19;i++)
 
 
 line[0] = [15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15];
-line[1] = [15,5,0,0,0,0,0,0,0,0,0,0,5,5,5,16,6,15,5,5,5,5,1,1,1,1,1,1,1,1,1,15];
-line[2] = [15,5,9,16,1,11,11,11,11,0,0,5,5,5,5,11,6,15,5,6,5,5,11,11,11,11,11,11,11,1,1,15];
-line[3] = [15,11,0,15,1,11,1,6,1,11,0,1,1,1,1,5,1,15,5,5,5,0,11,5,5,5,5,5,5,1,1,15];
-line[4] = [15,11,0,15,1,11,1,1,1,11,11,11,0,0,0,11,0,15,5,5,5,0,11,5,5,5,5,5,5,1,1,15];
-line[5] = [15,0,0,15,1,11,1,0,1,11,0,0,11,0,0,16,0,15,5,0,0,0,11,5,5,6,5,5,5,1,1,15];
-line[6] = [15,0,11,15,1,11,1,0,1,11,0,0,0,0,0,15,0,15,1,1,1,1,11,5,5,5,5,5,5,1,1,15];
-line[7] = [15,0,0,15,1,11,1,6,1,11,0,0,0,0,11,15,0,15,0,0,0,0,11,5,5,5,5,5,5,1,1,15];
-line[8] = [15,11,0,15,1,11,0,1,0,11,0,0,0,11,0,15,0,15,0,0,0,0,11,1,1,1,1,1,1,1,1,15];
-line[9] = [15,0,0,15,1,11,0,1,0,11,0,0,11,0,0,15,0,15,0,0,0,0,11,0,0,0,0,0,0,0,0,15];
-line[10] = [15,0,11,15,1,11,0,1,0,11,0,11,0,0,0,15,0,15,0,0,0,0,11,0,0,0,0,0,0,0,0,15];
-line[11] = [15,0,0,15,1,11,6,0,6,11,0,0,0,0,0,15,0,15,0,0,0,0,11,0,11,0,0,0,0,0,0,15];
-line[12] = [15,11,0,15,1,11,1,0,1,11,5,0,0,0,0,15,0,15,0,11,11,11,11,0,0,0,0,0,0,0,0,15];
-line[13] = [15,0,0,15,1,11,1,0,1,0,5,11,0,0,0,15,0,15,0,0,0,3,11,0,0,0,11,0,0,0,0,15];
-line[14] = [15,0,11,15,1,11,1,0,1,11,1,1,11,0,0,15,0,15,0,0,0,0,11,0,0,0,0,0,0,0,0,15];
-line[15] = [15,0,0,15,1,11,6,1,6,11,0,0,0,11,0,15,0,15,0,0,0,0,11,0,0,0,0,0,11,0,0,15];
-line[16] = [15,11,0,16,1,11,17,18,19,11,0,0,0,0,0,15,0,16,0,0,0,0,11,0,0,0,0,0,0,0,0,15];
-line[17] = [15,6,0,1,1,0,15,22,11,11,0,0,0,0,0,15,0,0,0,0,0,0,5,1,0,0,0,0,0,0,0,15];
+line[1] = [15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15];
+line[2] = [15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15];
+line[3] = [15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15];
+line[4] = [15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15];
+line[5] = [15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15];
+line[6] = [15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15];
+line[7] = [15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15];
+line[8] = [15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15];
+line[9] = [15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15];
+line[10] = [15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15];
+line[11] = [15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15];
+line[12] = [15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15];
+line[13] = [15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15];
+line[14] = [15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15];
+line[15] = [15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15];
+line[16] = [15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15];
+line[17] = [15,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15];
 line[18] = [15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15];
 function getMousePos(canvas, evt) {
         var rect = canvas.getBoundingClientRect();
@@ -139,6 +139,7 @@ var render = function () {
         case 3 : {brush=12;break}
         case 4 : {brush=13;break}
         case 5 : {brush=14;break}
+        case 6 : {brush=31;break}
         default: {brush=0;break;}
       }
       brush_y=ly;brush_x=lx;
@@ -173,31 +174,33 @@ if(48 in keysDown) {brush=0;}
     {
       switch (line[i][j])
       {
-        case 1: {ctx.drawImage(baseImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 2: {ctx.drawImage(terminalImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 3: {ctx.drawImage(exitImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 4: {ctx.drawImage(o_diskImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 5: {ctx.drawImage(zonkImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 6: {ctx.drawImage(infotronImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 7: {ctx.drawImage(y_diskImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 8: {ctx.drawImage(r_diskImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 9: {ctx.drawImage(murphyImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 10: {ctx.drawImage(chip1Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 11: {ctx.drawImage(chip2Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 12: {ctx.drawImage(chip3Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 13: {ctx.drawImage(chip4Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 14: {ctx.drawImage(chip5Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 15: {ctx.drawImage(hw1Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 16: {ctx.drawImage(hw2Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 17: {ctx.drawImage(hw3Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 18: {ctx.drawImage(hw4Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 19: {ctx.drawImage(hw5Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 20: {ctx.drawImage(hw6Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 21: {ctx.drawImage(hw7Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 22: {ctx.drawImage(hw8Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 23: {ctx.drawImage(hw9Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 24: {ctx.drawImage(hw10Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 25: {ctx.drawImage(hw11Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
+        case 1: {ctx.drawImage(baseImage, j*32,i*32);break;}
+        case 2: {ctx.drawImage(terminalImage, j*32,i*32);break;}
+        case 3: {ctx.drawImage(exitImage, j*32,i*32);break;}
+        case 4: {ctx.drawImage(o_diskImage, j*32,i*32);break;}
+        case 5: {ctx.drawImage(zonkImage, j*32,i*32);break;}
+        case 6: {ctx.drawImage(infotronImage, j*32,i*32);break;}
+        case 7: {ctx.drawImage(y_diskImage, j*32,i*32);break;}
+        case 8: {ctx.drawImage(r_diskImage, j*32,i*32);break;}
+        case 9: {ctx.drawImage(murphyImage, j*32,i*32);break;}
+        case 10: {ctx.drawImage(chip1Image, j*32,i*32);break;}
+        case 11: {ctx.drawImage(chip2Image, j*32,i*32);break;}
+        case 12: {ctx.drawImage(chip3Image, j*32,i*32);break;}
+        case 13: {ctx.drawImage(chip4Image, j*32,i*32);break;}
+        case 14: {ctx.drawImage(chip5Image, j*32,i*32);break;}
+        case 15: {ctx.drawImage(hw1Image, j*32,i*32);break;}
+        case 16: {ctx.drawImage(hw2Image, j*32,i*32);break;}
+        case 17: {ctx.drawImage(hw3Image, j*32,i*32);break;}
+        case 18: {ctx.drawImage(hw4Image, j*32,i*32);break;}
+        case 19: {ctx.drawImage(hw5Image, j*32,i*32);break;}
+        case 20: {ctx.drawImage(hw6Image, j*32,i*32);break;}
+        case 21: {ctx.drawImage(hw7Image, j*32,i*32);break;}
+        case 22: {ctx.drawImage(hw8Image, j*32,i*32);break;}
+        case 23: {ctx.drawImage(hw9Image, j*32,i*32);break;}
+        case 24: {ctx.drawImage(hw10Image, j*32,i*32);break;}
+        case 25: {ctx.drawImage(hw11Image, j*32,i*32);break;}
+        case 31: {ctx.drawImage(bug_5Image, j*32,i*32);break;}
+
       }
 
     }

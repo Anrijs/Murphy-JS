@@ -336,7 +336,7 @@ function functionMurphyPush(i)
 {
   var mx = murphy.x-1;
   var my = murphy.y-1;
-  if(line[my+1][mx]!==-1&&line[my+1][mx]!==0&&line[my+1][mx]!==1&&line[my+1][mx]!==6&&line[my+1][mx]!==8&&murphy_direction==2) 
+  if(line[my+1][mx]!==-1&&line[my+1][mx]!==0&&line[my+1][mx]!==1&&line[my+1][mx]!==30&&line[my+1][mx]!==6&&line[my+1][mx]!==8&&murphy_direction==2) 
     {
       if(line[my+1][mx]==7&&line[my+2][mx]==0)
       {
@@ -351,7 +351,7 @@ function functionMurphyPush(i)
       else {murphy_move=0;murphy_distance=0;}
     }
     
-  if(line[my-1][mx]!==-1&&line[my-1][mx]!==0&&line[my-1][mx]!==1&&line[my-1][mx]!==6&&line[my-1][mx]!==8&&murphy_direction==1) 
+  if(line[my-1][mx]!==-1&&line[my-1][mx]!==0&&line[my-1][mx]!==1&&line[my-1][mx]!==30&&line[my-1][mx]!==6&&line[my-1][mx]!==8&&murphy_direction==1) 
     {if(line[my-1][mx]==7&&line[my-2][mx]==0)
       {
         for(var i=0;i<objCount;i++)
@@ -365,7 +365,7 @@ function functionMurphyPush(i)
       else {murphy_move=0;murphy_distance=0;}
     }
 
-  if(line[my][mx+1]!==-1&&line[my][mx+1]!==0&&line[my][mx+1]!==1&&line[my][mx+1]!==6&&line[my][mx+1]!==8&&murphy_direction==4) 
+  if(line[my][mx+1]!==-1&&line[my][mx+1]!==0&&line[my][mx+1]!==1&&line[my][mx+1]!==30&&line[my][mx+1]!==6&&line[my][mx+1]!==8&&murphy_direction==4) 
     {
       if(line[my][mx+2]==0&&(line[my][mx+1]==5||line[my][mx+1]==4))
       {
@@ -398,7 +398,7 @@ function functionMurphyPush(i)
         murphy_distance=0;
       }
     }
-  if(line[my][mx-1]!==-1&&line[my][mx-1]!==0&&line[my][mx-1]!==1&&line[my][mx-1]!==6&&line[my][mx-1]!==8&&murphy_direction==3) 
+  if(line[my][mx-1]!==-1&&line[my][mx-1]!==0&&line[my][mx-1]!==1&&line[my][mx-1]!==30&&line[my][mx-1]!==6&&line[my][mx-1]!==8&&murphy_direction==3) 
     {
       if(line[my][mx-2]==0&&(line[my][mx-1]==5||line[my][mx-1]==4))
       {
@@ -435,6 +435,8 @@ function functionMurphyPush(i)
 
 function functionMurphyMove()
 {
+
+
   if(murphy_distance<9)
     {
       murphy_distance++;

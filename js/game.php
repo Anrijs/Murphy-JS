@@ -361,6 +361,16 @@ var update = function ()
       plantDisk(murphy.x-1,murphy.y-1);
       redDisks--;
     }
+
+      var mx=murphy.x-1;
+  var my=murphy.y-1;
+  if(line[my+1][mx]>30&&40 in keysDown) {murphy.hit=1;explode(mx,my);}
+
+  if(line[my-1][mx]>30&&38 in keysDown) {murphy.hit=1;explode(mx,my);}
+  
+  if(line[my][mx+1]>30&&39 in keysDown) {murphy.hit=1;explode(mx,my);}
+  
+  if(line[my][mx-1]>30&&37 in keysDown) {murphy.hit=1;explode(mx,my);}
   }
 };
 
@@ -478,10 +488,9 @@ if(murphy_move==1&&murphy.hit!==1)
     murphy.hit=1;
     explode(murphy.x-1,murphy.y-1);
   }
+
   functionMurphyMove();
 }
-
-
 
     ctx.drawImage(bgImage, 0, 0);
 
@@ -513,6 +522,19 @@ if(murphy_move==1&&murphy.hit!==1)
         case 23: {ctx.drawImage(hw9Image, j*32,i*32);break;}
         case 24: {ctx.drawImage(hw10Image, j*32,i*32);break;}
         case 25: {ctx.drawImage(hw11Image, j*32,i*32);break;}
+
+        case 30: {ctx.drawImage(baseImage, j*32,i*32); var rand=Math.random(); if(rand<0.015){line[i][j]++;}break;}
+        case 31: {ctx.drawImage(bug_1Image, j*32,i*32); line[i][j]++;break;}
+        case 32: {ctx.drawImage(bug_1Image, j*32,i*32); line[i][j]++;break;}
+        case 33: {ctx.drawImage(bug_2Image, j*32,i*32); line[i][j]++;break;}
+        case 34: {ctx.drawImage(bug_2Image, j*32,i*32); line[i][j]++;break;}
+        case 35: {ctx.drawImage(bug_3Image, j*32,i*32); line[i][j]++;break;}
+        case 36: {ctx.drawImage(bug_3Image, j*32,i*32); line[i][j]++;break;}
+        case 37: {ctx.drawImage(bug_4Image, j*32,i*32); line[i][j]++;break;}
+        case 38: {ctx.drawImage(bug_4Image, j*32,i*32); line[i][j]++;break;}
+        case 39: {ctx.drawImage(bug_5Image, j*32,i*32); line[i][j]++;break;}
+        case 40: {ctx.drawImage(bug_5Image, j*32,i*32); var rand=Math.random(); if(rand<0.5){line[i][j]=33;}else{line[i][j]=30;}break;}
+
 
         case 80: {ctx.drawImage(explosion_1Image, j*32,i*32);line[i][j]++;break;}
         case 81: {ctx.drawImage(explosion_1Image, j*32,i*32);line[i][j]++;break;}
@@ -563,6 +585,8 @@ if(murphy_move==1&&murphy.hit!==1)
       }
     }
   }
+
+
 
   for(var i=0;i<objCount;i++)
   {
@@ -793,30 +817,30 @@ var explode = function(ex,ey)
   }
 
 
-  if((line[ey-1][ex-1]>109||line[ey-1][ex-1]<15)&&line[ey-1][ex-1]!==7&&line[ey-1][ex-1]!==4)   {line[ey-1][ex-1]=101;}
+  if((line[ey-1][ex-1]>109||line[ey-1][ex-1]<15||(line[ey-1][ex-1]>25&&line[ey-1][ex-1]<41))&&line[ey-1][ex-1]!==7&&line[ey-1][ex-1]!==4)   {line[ey-1][ex-1]=101;}
   else if(line[ey-1][ex-1]<15&&(line[ey-1][ex-1]==7||line[ey-1][ex-1]==4))   {line[ey-1][ex-1]=81;}
 //  
-  if((line[ey-1][ex  ]>109||line[ey-1][ex  ]<15)&&line[ey-1][ex  ]!==7&&line[ey-1][ex  ]!==4)   {line[ey-1][ex]=  101;}
+  if((line[ey-1][ex  ]>109||line[ey-1][ex  ]<15||(line[ey-1][ex  ]>25&&line[ey-1][ex  ]<41))&&line[ey-1][ex  ]!==7&&line[ey-1][ex  ]!==4)   {line[ey-1][ex]=  101;}
   else if(line[ey-1][ex  ]<15&&(line[ey-1][ex  ]==7||line[ey-1][ex  ]==4))   {line[ey-1][ex]=  81;}
 //
-  if((line[ey-1][ex+1]>109||line[ey-1][ex+1]<15)&&line[ey-1][ex+1]!==7&&line[ey-1][ex+1]!==4)   {line[ey-1][ex+1]=101;}
+  if((line[ey-1][ex+1]>109||line[ey-1][ex+1]<15||(line[ey-1][ex+1]>25&&line[ey-1][ex+1]<41))&&line[ey-1][ex+1]!==7&&line[ey-1][ex+1]!==4)   {line[ey-1][ex+1]=101;}
   else if(line[ey-1][ex+1]<15&&(line[ey-1][ex+1]==7||line[ey-1][ex+1]==4))   {line[ey-1][ex+1]=81;}
 //
-  if((line[ey  ][ex-1]>109||line[ey  ][ex-1]<15)&&line[ey  ][ex-1]!==7&&line[ey  ][ex-1]!==4)   {line[ey  ][ex-1]=101;}
+  if((line[ey  ][ex-1]>109||line[ey  ][ex-1]<15||(line[ey  ][ex-1]>25&&line[ey  ][ex-1]<41))&&line[ey  ][ex-1]!==7&&line[ey  ][ex-1]!==4)   {line[ey  ][ex-1]=101;}
   else if(line[ey  ][ex-1]<15&&(line[ey  ][ex-1]==7||line[ey  ][ex-1]==4))   {line[ey  ][ex-1]=81;}
 //
   line[ey][ex]=  101;
 //
-  if((line[ey  ][ex+1]>109||line[ey  ][ex+1]<15)&&line[ey  ][ex+1]!==7&&line[ey  ][ex+1]!==4)   {line[ey  ][ex+1]=101;}
+  if((line[ey  ][ex+1]>109||line[ey  ][ex+1]<15||(line[ey  ][ex+1]>25&&line[ey  ][ex+1]<41))&&line[ey  ][ex+1]!==7&&line[ey  ][ex+1]!==4)   {line[ey  ][ex+1]=101;}
   else if(line[ey  ][ex+1]<15&&(line[ey  ][ex+1]==7||line[ey  ][ex+1]==4))   {line[ey  ][ex+1]=81;}
 //
-  if((line[ey+1][ex-1]>109||line[ey+1][ex-1]<15)&&line[ey+1][ex-1]!==7&&line[ey+1][ex-1]!==4)   {line[ey+1][ex-1]=101;}
+  if((line[ey+1][ex-1]>109||line[ey+1][ex-1]<15||(line[ey+1][ex-1]>25&&line[ey+1][ex-1]<41))&&line[ey+1][ex-1]!==7&&line[ey+1][ex-1]!==4)   {line[ey+1][ex-1]=101;}
   else if(line[ey+1][ex-1]<15&&(line[ey+1][ex-1]==7||line[ey+1][ex-1]==4))   {line[ey+1][ex-1]=81;}
 //
-  if((line[ey+1][ex  ]>109||line[ey+1][ex  ]<15)&&line[ey+1][ex  ]!==7&&line[ey+1][ex  ]!==4)   {line[ey+1][ex]=  101;}
+  if((line[ey+1][ex  ]>109||line[ey+1][ex  ]<15||(line[ey+1][ex  ]>25&&line[ey+1][ex  ]<41))&&line[ey+1][ex  ]!==7&&line[ey+1][ex  ]!==4)   {line[ey+1][ex]=  101;}
   else if(line[ey+1][ex  ]<15&&(line[ey+1][ex  ]==7||line[ey+1][ex  ]==4))   {line[ey+1][ex]=  81;}
 //
-  if((line[ey+1][ex+1]>109||line[ey+1][ex+1]<15)&&line[ey+1][ex+1]!==7&&line[ey+1][ex+1]!==4)   {line[ey+1][ex+1]=101;}
+  if((line[ey+1][ex+1]>109||line[ey+1][ex+1]<15||(line[ey+1][ex+1]>25&&line[ey+1][ex+1]<41))&&line[ey+1][ex+1]!==7&&line[ey+1][ex+1]!==4)   {line[ey+1][ex+1]=101;}
   else if(line[ey+1][ex+1]<15&&(line[ey+1][ex+1]==7||line[ey+1][ex+1]==4))   {line[ey+1][ex+1]=81;}
 };
 

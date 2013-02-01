@@ -252,3 +252,17 @@ logoImage.src = "img/logo.png";
 var selectorImage = new Image();
 selectorImage.src = "img/selector.png";
 
+var bug_1Image = new Image();
+bug_1Image.src = "img/bug_1.png";     
+
+var bug_2Image = new Image();
+bug_2Image.src = "img/bug_2.png";     
+
+var bug_3Image = new Image();
+bug_3Image.src = "img/bug_3.png";     
+
+var bug_4Image = new Image();
+bug_4Image.src = "img/bug_4.png";     
+
+var bug_5Image = new Image();
+bug_5Image.src = "img/bug_5.png";    
