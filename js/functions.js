@@ -166,6 +166,7 @@ function fallFunction(i,cx,cy)
           explode(murphy.x-1,murphy.y-1);
         }
       } 
+      if(line[cy+2][cx]==4) {explode(cx,cy+2);}
       fallObject[i].yoffset=0;
       line[cy+1][cx]=fallObject[i].id; // set grid value to 0;
       if(fallObject[i].id==4&&line[cy+2][cx]!==0&&line[cy+2][cx]!==9&&(line[cy+2][cx]<80||line[cy+2][cx]>114)){fallObject[i].x=-1;explode(cx,cy+1);}
