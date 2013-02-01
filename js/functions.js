@@ -144,7 +144,7 @@ function functionFallLeft(i,cx,cy)
 function fallFunction(i,cx,cy)
 {
 
-  if(fallObject[i].fallDistance<9)
+  if(fallObject[i].fallDistance<10)
   {
     fallObject[i].yoffset+=fallSpeed;
     fallObject[i].fallDistance++;
@@ -181,7 +181,7 @@ function getEnvrioment(i,cx,cy)
       fallObject[i].isFalling=1;
       line[cy+1][cx]=-1;
     }
-    else if(line[cy+1][cx]==5||line[cy+1][cx]==6||line[cy+1][cx]==11||line[cy+1][cx]==12||line[cy+1][cx]==13) //Get whats in sides
+    else if(line[cy+1][cx]==5||line[cy+1][cx]==6||line[cy+1][cx]==10||line[cy+1][cx]==11||line[cy+1][cx]==12||line[cy+1][cx]==13||line[cy+1][cx]==14||line[cy+1][cx]==13) //Get whats in sides
     {
       //Check if sides are free
       if(line[cy][cx+1]==0&&line[cy+1][cx+1]==0&&(fallObject[i].id==5||fallObject[i].id==6))    // Right side

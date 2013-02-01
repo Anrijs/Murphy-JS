@@ -127,6 +127,18 @@ hw11Image.src = "img/hw11.png";
 var chip1Image = new Image();
 chip1Image.src = "img/chip1.png";
 
+var chip2Image = new Image();
+chip2Image.src = "img/chip2.png";
+
+var chip3Image = new Image();
+chip3Image.src = "img/chip3.png";
+
+var chip4Image = new Image();
+chip4Image.src = "img/chip4.png";
+
+var chip5Image = new Image();
+chip5Image.src = "img/chip5.png";
+
 var y_diskImage = new Image();
 y_diskImage.src = "img/y_disk.png";
 

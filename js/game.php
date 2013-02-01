@@ -492,70 +492,74 @@ if(murphy_move==1&&murphy.hit!==1)
     {
       switch (line[i][j])
       {
-        case 1: {ctx.drawImage(baseImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 2: {ctx.drawImage(terminalImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 3: {ctx.drawImage(exitImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
-       // case 4: {ctx.drawImage(o_diskImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 8: {ctx.drawImage(r_diskImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 11: {ctx.drawImage(chip1Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 15: {ctx.drawImage(hw1Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 16: {ctx.drawImage(hw2Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 17: {ctx.drawImage(hw3Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 18: {ctx.drawImage(hw4Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 19: {ctx.drawImage(hw5Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 20: {ctx.drawImage(hw6Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 21: {ctx.drawImage(hw7Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 22: {ctx.drawImage(hw8Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 23: {ctx.drawImage(hw9Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 24: {ctx.drawImage(hw10Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 25: {ctx.drawImage(hw11Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
+        case 1: {ctx.drawImage(baseImage, j*32,i*32);break;}
+        case 2: {ctx.drawImage(terminalImage, j*32,i*32);break;}
+        case 3: {ctx.drawImage(exitImage, j*32,i*32);break;}
+       // case 4: {ctx.drawImage(o_diskImage, j*32,i*32);break;}
+        case 8: {ctx.drawImage(r_diskImage, j*32,i*32);break;}
+        case 10: {ctx.drawImage(chip1Image, j*32,i*32);break;}
+        case 11: {ctx.drawImage(chip2Image, j*32,i*32);break;}
+        case 12: {ctx.drawImage(chip3Image, j*32,i*32);break;}
+        case 13: {ctx.drawImage(chip4Image, j*32,i*32);break;}
+        case 14: {ctx.drawImage(chip5Image, j*32,i*32);break;}
+        case 15: {ctx.drawImage(hw1Image, j*32,i*32);break;}
+        case 16: {ctx.drawImage(hw2Image, j*32,i*32);break;}
+        case 17: {ctx.drawImage(hw3Image, j*32,i*32);break;}
+        case 18: {ctx.drawImage(hw4Image, j*32,i*32);break;}
+        case 19: {ctx.drawImage(hw5Image, j*32,i*32);break;}
+        case 20: {ctx.drawImage(hw6Image, j*32,i*32);break;}
+        case 21: {ctx.drawImage(hw7Image, j*32,i*32);break;}
+        case 22: {ctx.drawImage(hw8Image, j*32,i*32);break;}
+        case 23: {ctx.drawImage(hw9Image, j*32,i*32);break;}
+        case 24: {ctx.drawImage(hw10Image, j*32,i*32);break;}
+        case 25: {ctx.drawImage(hw11Image, j*32,i*32);break;}
 
-        case 80: {ctx.drawImage(explosion_1Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 81: {ctx.drawImage(explosion_1Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 82: {ctx.drawImage(explosion_2Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 83: {ctx.drawImage(explosion_2Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 84: {ctx.drawImage(explosion_3Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 85: {ctx.drawImage(explosion_3Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 86: {ctx.drawImage(explosion_4Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 87: {ctx.drawImage(explosion_4Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 88: {ctx.drawImage(explosion_5Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 89: {ctx.drawImage(explosion_5Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 90: {ctx.drawImage(explosion_6Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 91: {ctx.drawImage(explosion_6Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 92: {ctx.drawImage(explosion_7Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 93: {ctx.drawImage(explosion_7Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]=0;explode(j,i);break;}
+        case 80: {ctx.drawImage(explosion_1Image, j*32,i*32);line[i][j]++;break;}
+        case 81: {ctx.drawImage(explosion_1Image, j*32,i*32);line[i][j]++;break;}
+        case 82: {ctx.drawImage(explosion_2Image, j*32,i*32);line[i][j]++;break;}
+        case 83: {ctx.drawImage(explosion_2Image, j*32,i*32);line[i][j]++;break;}
+        case 84: {ctx.drawImage(explosion_3Image, j*32,i*32);line[i][j]++;break;}
+        case 85: {ctx.drawImage(explosion_3Image, j*32,i*32);line[i][j]++;break;}
+        case 86: {ctx.drawImage(explosion_4Image, j*32,i*32);line[i][j]++;break;}
+        case 87: {ctx.drawImage(explosion_4Image, j*32,i*32);line[i][j]++;break;}
+        case 88: {ctx.drawImage(explosion_5Image, j*32,i*32);line[i][j]++;break;}
+        case 89: {ctx.drawImage(explosion_5Image, j*32,i*32);line[i][j]++;break;}
+        case 90: {ctx.drawImage(explosion_6Image, j*32,i*32);line[i][j]++;break;}
+        case 91: {ctx.drawImage(explosion_6Image, j*32,i*32);line[i][j]++;break;}
+        case 92: {ctx.drawImage(explosion_7Image, j*32,i*32);line[i][j]++;break;}
+        case 93: {ctx.drawImage(explosion_7Image, j*32,i*32);line[i][j]=0;explode(j,i);break;}
 
-        case 101: {ctx.drawImage(explosion_1Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 102: {ctx.drawImage(explosion_1Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 103: {ctx.drawImage(explosion_2Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 104: {ctx.drawImage(explosion_2Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 105: {ctx.drawImage(explosion_3Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 106: {ctx.drawImage(explosion_3Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 107: {ctx.drawImage(explosion_4Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 108: {ctx.drawImage(explosion_4Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 109: {ctx.drawImage(explosion_5Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 110: {ctx.drawImage(explosion_5Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 111: {ctx.drawImage(explosion_6Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 112: {ctx.drawImage(explosion_6Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 113: {ctx.drawImage(explosion_7Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 114: {ctx.drawImage(explosion_7Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]=0;break;}
+        case 101: {ctx.drawImage(explosion_1Image, j*32,i*32);line[i][j]++;break;}
+        case 102: {ctx.drawImage(explosion_1Image, j*32,i*32);line[i][j]++;break;}
+        case 103: {ctx.drawImage(explosion_2Image, j*32,i*32);line[i][j]++;break;}
+        case 104: {ctx.drawImage(explosion_2Image, j*32,i*32);line[i][j]++;break;}
+        case 105: {ctx.drawImage(explosion_3Image, j*32,i*32);line[i][j]++;break;}
+        case 106: {ctx.drawImage(explosion_3Image, j*32,i*32);line[i][j]++;break;}
+        case 107: {ctx.drawImage(explosion_4Image, j*32,i*32);line[i][j]++;break;}
+        case 108: {ctx.drawImage(explosion_4Image, j*32,i*32);line[i][j]++;break;}
+        case 109: {ctx.drawImage(explosion_5Image, j*32,i*32);line[i][j]++;break;}
+        case 110: {ctx.drawImage(explosion_5Image, j*32,i*32);line[i][j]++;break;}
+        case 111: {ctx.drawImage(explosion_6Image, j*32,i*32);line[i][j]++;break;}
+        case 112: {ctx.drawImage(explosion_6Image, j*32,i*32);line[i][j]++;break;}
+        case 113: {ctx.drawImage(explosion_7Image, j*32,i*32);line[i][j]++;break;}
+        case 114: {ctx.drawImage(explosion_7Image, j*32,i*32);line[i][j]=0;break;}
 
-        case 121: {ctx.drawImage(exit_1Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 122: {ctx.drawImage(exit_1Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 123: {ctx.drawImage(exit_2Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 124: {ctx.drawImage(exit_2Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 125: {ctx.drawImage(exit_3Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 126: {ctx.drawImage(exit_3Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 127: {ctx.drawImage(exit_4Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 128: {ctx.drawImage(exit_4Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 129: {ctx.drawImage(exit_5Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 130: {ctx.drawImage(exit_5Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 131: {ctx.drawImage(exit_6Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 132: {ctx.drawImage(exit_6Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 133: {ctx.drawImage(exit_7Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]++;break;}
-        case 134: {ctx.drawImage(exit_7Image, ((j+1)*32)-32,((i+1)*32)-32);line[i][j]=0;break;}
+        case 121: {ctx.drawImage(exit_1Image, j*32,i*32);line[i][j]++;break;}
+        case 122: {ctx.drawImage(exit_1Image, j*32,i*32);line[i][j]++;break;}
+        case 123: {ctx.drawImage(exit_2Image, j*32,i*32);line[i][j]++;break;}
+        case 124: {ctx.drawImage(exit_2Image, j*32,i*32);line[i][j]++;break;}
+        case 125: {ctx.drawImage(exit_3Image, j*32,i*32);line[i][j]++;break;}
+        case 126: {ctx.drawImage(exit_3Image, j*32,i*32);line[i][j]++;break;}
+        case 127: {ctx.drawImage(exit_4Image, j*32,i*32);line[i][j]++;break;}
+        case 128: {ctx.drawImage(exit_4Image, j*32,i*32);line[i][j]++;break;}
+        case 129: {ctx.drawImage(exit_5Image, j*32,i*32);line[i][j]++;break;}
+        case 130: {ctx.drawImage(exit_5Image, j*32,i*32);line[i][j]++;break;}
+        case 131: {ctx.drawImage(exit_6Image, j*32,i*32);line[i][j]++;break;}
+        case 132: {ctx.drawImage(exit_6Image, j*32,i*32);line[i][j]++;break;}
+        case 133: {ctx.drawImage(exit_7Image, j*32,i*32);line[i][j]++;break;}
+        case 134: {ctx.drawImage(exit_7Image, j*32,i*32);line[i][j]=0;break;}
 
-       // case 8: {ctx.drawImage(explosionImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
+       // case 8: {ctx.drawImage(explosionImage, j*32,i*32);break;}
       }
     }
   }

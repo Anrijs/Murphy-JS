@@ -4,26 +4,26 @@ for(var i=0;i<19;i++)
   line[i]   = new Array();
 }
 
-line[0]   = [15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15];
-line[1]   = [15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15];
-line[2]   = [15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15];
-line[3]   = [15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15];
-line[4]   = [15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15];
-line[5]   = [15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15];
-line[6]   = [15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15];
-line[7]   = [15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15];
-line[8]   = [15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15];
-line[9]   = [15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15];
-line[10]  = [15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15];
-line[11]  = [15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15];
-line[12]  = [15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15];
-line[13]  = [15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15];
-line[14]  = [15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15];
-line[15]  = [15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15];
-line[16]  = [15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15];
-line[17]  = [15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,15];
-line[18]  = [15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15];
 
+line[0] = [15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15];
+line[1] = [15,5,0,0,0,0,0,0,0,0,0,0,5,5,5,16,6,15,5,5,5,5,1,1,1,1,1,1,1,1,1,15];
+line[2] = [15,5,9,16,1,11,11,11,11,0,0,5,5,5,5,11,6,15,5,6,5,5,11,11,11,11,11,11,11,1,1,15];
+line[3] = [15,11,0,15,1,11,1,6,1,11,0,1,1,1,1,5,1,15,5,5,5,0,11,5,5,5,5,5,5,1,1,15];
+line[4] = [15,11,0,15,1,11,1,1,1,11,11,11,0,0,0,11,0,15,5,5,5,0,11,5,5,5,5,5,5,1,1,15];
+line[5] = [15,0,0,15,1,11,1,0,1,11,0,0,11,0,0,16,0,15,5,0,0,0,11,5,5,6,5,5,5,1,1,15];
+line[6] = [15,0,11,15,1,11,1,0,1,11,0,0,0,0,0,15,0,15,1,1,1,1,11,5,5,5,5,5,5,1,1,15];
+line[7] = [15,0,0,15,1,11,1,6,1,11,0,0,0,0,11,15,0,15,0,0,0,0,11,5,5,5,5,5,5,1,1,15];
+line[8] = [15,11,0,15,1,11,0,1,0,11,0,0,0,11,0,15,0,15,0,0,0,0,11,1,1,1,1,1,1,1,1,15];
+line[9] = [15,0,0,15,1,11,0,1,0,11,0,0,11,0,0,15,0,15,0,0,0,0,11,0,0,0,0,0,0,0,0,15];
+line[10] = [15,0,11,15,1,11,0,1,0,11,0,11,0,0,0,15,0,15,0,0,0,0,11,0,0,0,0,0,0,0,0,15];
+line[11] = [15,0,0,15,1,11,6,0,6,11,0,0,0,0,0,15,0,15,0,0,0,0,11,0,11,0,0,0,0,0,0,15];
+line[12] = [15,11,0,15,1,11,1,0,1,11,5,0,0,0,0,15,0,15,0,11,11,11,11,0,0,0,0,0,0,0,0,15];
+line[13] = [15,0,0,15,1,11,1,0,1,0,5,11,0,0,0,15,0,15,0,0,0,3,11,0,0,0,11,0,0,0,0,15];
+line[14] = [15,0,11,15,1,11,1,0,1,11,1,1,11,0,0,15,0,15,0,0,0,0,11,0,0,0,0,0,0,0,0,15];
+line[15] = [15,0,0,15,1,11,6,1,6,11,0,0,0,11,0,15,0,15,0,0,0,0,11,0,0,0,0,0,11,0,0,15];
+line[16] = [15,11,0,16,1,11,17,18,19,11,0,0,0,0,0,15,0,16,0,0,0,0,11,0,0,0,0,0,0,0,0,15];
+line[17] = [15,6,0,1,1,0,15,22,11,11,0,0,0,0,0,15,0,0,0,0,0,0,5,1,0,0,0,0,0,0,0,15];
+line[18] = [15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15];
 function getMousePos(canvas, evt) {
         var rect = canvas.getBoundingClientRect();
         return {
@@ -35,65 +35,15 @@ function getMousePos(canvas, evt) {
 var brush_x=1;
 var brush_y=19;
 
-var bgImage = new Image();
-var baseImage = new Image();
-var terminalImage = new Image();
-var murphyImage = new Image();
-var exitImage = new Image();
-var zonkImage = new Image();
-var infotronImage = new Image();
-var explosionImage = new Image();
+var bgeImage = new Image();
 var selectionImage = new Image();
 requiredInfotrons  = 0;
 
-bgImage.src = "img/leveleditor.png";
-baseImage.src = "img/base.png";
-terminalImage.src = "img/terminal.png";
-murphyImage.src = "img/murphy.png";
-exitImage.src = "img/exit.png";
-zonkImage.src = "img/zonk.png";
-infotronImage.src = "img/infotron.png";
-explosionImage.src = "img/explosion.png";
+bgeImage.src = "img/leveleditor.png";
 selectionImage.src = "img/editor_selection.png";
 
 var activeImage = new Image();
 activeImage.src = "img/editor_active.png";
-
-var hw1Image = new Image();      
-hw1Image.src = "img/hw1.png"; 
-
-var hw2Image = new Image();
-hw2Image.src = "img/hw2.png";
-
-var hw3Image = new Image();
-hw3Image.src = "img/hw3.png";
-
-var hw4Image = new Image();
-hw4Image.src = "img/hw4.png";
-
-var hw5Image = new Image();
-hw5Image.src = "img/hw5.png";
-
-var hw6Image = new Image();
-hw6Image.src = "img/hw6.png";
-
-var hw7Image = new Image();
-hw7Image.src = "img/hw7.png";
-
-var hw8Image = new Image();
-hw8Image.src = "img/hw8.png";
-
-var hw9Image = new Image();
-hw9Image.src = "img/hw9.png";
-
-var hw10Image = new Image();
-hw10Image.src = "img/hw10.png";
-
-var hw11Image = new Image();
-hw11Image.src = "img/hw11.png";
-
-var chip1Image = new Image();
-chip1Image.src = "img/chip1.png";
 
 
 var canvas = document.createElement("canvas");
@@ -151,13 +101,13 @@ var render = function () {
         case 1: {brush=1;break;}
         case 2: {brush=2;break;}
         case 3: {brush=3;break;}
-        case 4: {brush=0;break;}
+        case 4: {brush=7;break;}
         case 5: {brush=5;break;}
         case 6: {brush=6;break;}
-        case 7: {brush=0;break;}
-        case 8: {brush=0;break;}
+        case 7: {brush=4;break;}
+        case 8: {brush=8;break;}
         case 9: {brush=9;break;}
-        default: {brush=11;break;}
+        default: {brush=0;break;}
       }
       brush_y=ly;brush_x=lx;
     }
@@ -180,6 +130,19 @@ var render = function () {
       }
       brush_y=ly;brush_x=lx;
     }
+    else if(ly==21&&lx<15)
+    {
+      switch (lx)
+      {
+        case 1 : {brush=10;break}
+        case 2 : {brush=11;break}
+        case 3 : {brush=12;break}
+        case 4 : {brush=13;break}
+        case 5 : {brush=14;break}
+        default: {brush=0;break;}
+      }
+      brush_y=ly;brush_x=lx;
+    }
     else if(ly==21&&(lx==27||lx==28))
       {requiredInfotrons++;mouseIsDown=0;}
     else if(ly==22&&(lx==27||lx==28))
@@ -188,7 +151,7 @@ var render = function () {
     else
     {mouseIsDown=0;document.getElementById("array").innerHTML=getLevel();}
   }
-  ctx.drawImage(bgImage, 0, 0);
+  ctx.drawImage(bgeImage, 0, 0);
 if(48 in keysDown) {brush=0;} 
   if(49 in keysDown) {brush=1;} 
   if(50 in keysDown) {brush=2;} 
@@ -213,10 +176,17 @@ if(48 in keysDown) {brush=0;}
         case 1: {ctx.drawImage(baseImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
         case 2: {ctx.drawImage(terminalImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
         case 3: {ctx.drawImage(exitImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
+        case 4: {ctx.drawImage(o_diskImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
         case 5: {ctx.drawImage(zonkImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
         case 6: {ctx.drawImage(infotronImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
+        case 7: {ctx.drawImage(y_diskImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
+        case 8: {ctx.drawImage(r_diskImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
         case 9: {ctx.drawImage(murphyImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
-        case 11: {ctx.drawImage(chip1Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
+        case 10: {ctx.drawImage(chip1Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
+        case 11: {ctx.drawImage(chip2Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
+        case 12: {ctx.drawImage(chip3Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
+        case 13: {ctx.drawImage(chip4Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
+        case 14: {ctx.drawImage(chip5Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
         case 15: {ctx.drawImage(hw1Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
         case 16: {ctx.drawImage(hw2Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
         case 17: {ctx.drawImage(hw3Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
