@@ -624,7 +624,7 @@ if(murphy_move==1&&murphy.hit!==1)
 
   }
 
-  if(murphy_lastside==0&&murphy_move==1&&murphy_pull==0&&murphy.isPushing==0&&murphy.hit!==1)
+  if(murphy_lastside==0&&(murphy_move==1||37 in keysDown||38 in keysDown||40 in keysDown)&&murphy_pull==0&&murphy.isPushing==0&&murphy.hit!==1)
   {
     switch (murphy_distance)
     {
@@ -641,7 +641,7 @@ if(murphy_move==1&&murphy.hit!==1)
       case 0: {ctx.drawImage(murphy_left_0Image, ((murphy.x+murphy.xoffset)*32)-32, ((murphy.y+murphy.yoffset)*32)-32);break;}
     }
   }
-  else if(murphy_lastside==1&&murphy_move==1&&murphy_pull==0&&murphy.isPushing==0&&murphy.hit!==1)
+  else if(murphy_lastside==1&&(murphy_move==1||39 in keysDown||38 in keysDown||40 in keysDown)&&murphy_pull==0&&murphy.isPushing==0&&murphy.hit!==1)
   {
   switch (murphy_distance)
     {
@@ -663,7 +663,8 @@ if(murphy_move==1&&murphy.hit!==1)
   else if(murphy.isPushing==1&&murphy.hit!==1)
   {ctx.drawImage(murphy_push_rightImage, ((murphy.x+murphy.xoffset)*32)-32, ((murphy.y+murphy.yoffset)*32)-32);}
 
-  else if(murphy.hit!==1) {ctx.drawImage(murphyImage, ((murphy.x+murphy.xoffset)*32)-32, ((murphy.y+murphy.yoffset)*32)-32);}
+
+  else if(murphy.hit!==1){ctx.drawImage(murphyImage, ((murphy.x+murphy.xoffset)*32)-32, ((murphy.y+murphy.yoffset)*32)-32);}
   
 
 
@@ -722,7 +723,7 @@ for(var i=0;i<19;i++)
   }
 
 };
-setInterval(main,1000/15);
+setInterval(main,1000/40);
 
  // Execute as fast as possible
  //rolls in falling object!

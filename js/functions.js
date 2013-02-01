@@ -445,7 +445,7 @@ function functionMurphyMove()
       murphy.yoffset = 0;
 
       
-      if(touchDown==0&&murphy_direction_changed==1)
+      if(touchDown==0)
       {
         murphy_move=0;
         murphy_distance=0;
