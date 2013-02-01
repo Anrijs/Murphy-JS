@@ -266,3 +266,6 @@ bug_4Image.src = "img/bug_4.png";
 
 var bug_5Image = new Image();
 bug_5Image.src = "img/bug_5.png";    
+
+var splash_bugImage = new Image();
+splash_bugImage.src = "img/splash_bug.png";    

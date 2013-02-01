@@ -28,7 +28,7 @@ while($i<$totalLevels+1)
   echo "var totalLevels=".$totalLevels;
 ?>
 
- var version = 'Alpha v1.3.4';
+ var version = 'Alpha v1.4';
 
 var murphy = [];
 murphy.x=2;
@@ -533,7 +533,7 @@ if(murphy_move==1&&murphy.hit!==1)
         case 37: {ctx.drawImage(bug_4Image, j*32,i*32); line[i][j]++;break;}
         case 38: {ctx.drawImage(bug_4Image, j*32,i*32); line[i][j]++;break;}
         case 39: {ctx.drawImage(bug_5Image, j*32,i*32); line[i][j]++;break;}
-        case 40: {ctx.drawImage(bug_5Image, j*32,i*32); var rand=Math.random(); if(rand<0.5){line[i][j]=33;}else{line[i][j]=30;}break;}
+        case 40: {ctx.drawImage(bug_5Image, j*32,i*32); var rand=Math.random(); if(rand<0.6){line[i][j]=33;}else{line[i][j]=30;}break;}
 
 
         case 80: {ctx.drawImage(explosion_1Image, j*32,i*32);line[i][j]++;break;}
@@ -860,8 +860,8 @@ var drawMenu = function ()
 
   ctx.fillStyle = '#f80'
   ctx.font = "20px Courier New Bold";
-  ctx.fillText("Now 200% more animated!", 240,50);
-  ctx.drawImage(explosion_2Image, 530, 48);
+  ctx.fillText("Now 200% more bugs!", 240,50);
+  ctx.drawImage(splash_bugImage, 470, 48);
 
   ctx.fillStyle = '#dd4';
   ctx.font = "16px Helvetica, Bold";
