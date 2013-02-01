@@ -450,6 +450,13 @@ if(murphy_move==1&&murphy.hit!==1) //check for colusions
   
 }
 
+if(murphy.isPushing!==0)
+{
+  if(37 in keysDown || 39 in keysDown)
+  {}
+  else {murphy.isPushing=0;}
+}
+
 if(murphy_move==1&&murphy.hit!==1)
 {
   if((line[my][mx+1]==-1&&murphy_direction==4&&murphy_distance>2)||(line[my][mx-1]==-1&&murphy_direction==3&&murphy_distance>2))
@@ -460,12 +467,7 @@ if(murphy_move==1&&murphy.hit!==1)
   functionMurphyMove();
 }
 
-if(murphy.isPushing!==0&&murphy)
-{
-  if(37 in keysDown || 39 in keysDown)
-  {}
-  else {murphy.isPushing=0;}
-}
+
 
     ctx.drawImage(bgImage, 0, 0);
 
@@ -720,7 +722,7 @@ for(var i=0;i<19;i++)
   }
 
 };
-setInterval(main,1000/40);
+setInterval(main,1000/15);
 
  // Execute as fast as possible
  //rolls in falling object!
@@ -928,10 +930,8 @@ var drawBSOD   = function ()
     textLine+=20;
     ctx.fillText("Press [Enter] to continiue", (canvas.width/3),textLine_BSOD);textLine_BSOD+=20;
   }
-
  if(13 in keysDown)
   {bsod=0;}
- 
 }
 
 

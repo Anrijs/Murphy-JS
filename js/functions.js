@@ -444,12 +444,8 @@ function functionMurphyMove()
       murphy.xoffset = 0;
       murphy.yoffset = 0;
 
-      if(murphy_direction_changed==1)
-      {
-        murphy_direction=murphy_direction_move;
-        murphy_direction_changed=0;
-      }
-      if(touchDown==0)
+      
+      if(touchDown==0&&murphy_direction_changed==1)
       {
         murphy_move=0;
         murphy_distance=0;
@@ -460,5 +456,10 @@ function functionMurphyMove()
         murphy_move=1;
         murphy_distance=0;
      }
+     if(murphy_direction_changed==1)
+      {
+        murphy_direction=murphy_direction_move;
+        murphy_direction_changed=0;
+      }
     }
 }
