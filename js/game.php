@@ -53,6 +53,9 @@ var isLoaded = 0;
 var murphy_lastside = 0;
 var terminalBlow = 0;
 var levelsAvaible = <?php echo $levelsAvaible;?> ;
+var diskIsPlanted = 0;
+var diskX=0;
+var diskY=0;
 
 var errorMsg = "";
 
@@ -63,8 +66,9 @@ var gameLevel = 1;
 var levelToLoad = 1;
 var level_author = "unknown";
 var level_name = "unknown";
-
+var redDisks = 0;
 var splashSize =32;
+var diskDelay = 0;
 
 var fallObj = function()
 {
@@ -94,6 +98,11 @@ var loadGame = function(levelID)
 {
   //levelToLoad=levelID;
   isLoaded=0;
+  diskDelay=0;
+  diskIsPlanted=0;
+   diskX=0;
+ diskY=0;
+  redDisks = 0;
   murphy.xoffset=0;
   murphy.yoffset=0;
   murphy.hit=0;
@@ -347,6 +356,11 @@ var update = function ()
     if (32 in keysDown) { // Player holding right
       murphy_pull = 1;
     }
+    if(16 in keysDown&&redDisks>=1&&diskIsPlanted==0)
+    {
+      plantDisk(murphy.x-1,murphy.y-1);
+      redDisks--;
+    }
   }
 };
 
@@ -385,7 +399,7 @@ for(var i=0;i<objCount;i++)
     // ----- IS PUSHED BY MURPHY
     else if(fallObject[i].isPushed==1)
       {
-        functionPushRight;
+        functionPushRight(i,cx,cy);
       }
     else if(fallObject[i].isPushed==2)
      {
@@ -471,6 +485,7 @@ if(murphy_move==1&&murphy.hit!==1)
 
     ctx.drawImage(bgImage, 0, 0);
 
+
   for(var i=0;i<19;i++)
   {
     for(var j=0;j<32;j++)
@@ -481,6 +496,7 @@ if(murphy_move==1&&murphy.hit!==1)
         case 2: {ctx.drawImage(terminalImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
         case 3: {ctx.drawImage(exitImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
        // case 4: {ctx.drawImage(o_diskImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
+        case 8: {ctx.drawImage(r_diskImage, ((j+1)*32)-32,((i+1)*32)-32);break;}
         case 11: {ctx.drawImage(chip1Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
         case 15: {ctx.drawImage(hw1Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
         case 16: {ctx.drawImage(hw2Image, ((j+1)*32)-32,((i+1)*32)-32);break;}
@@ -666,7 +682,12 @@ if(murphy_move==1&&murphy.hit!==1)
 
   else if(murphy.hit!==1){ctx.drawImage(murphyImage, ((murphy.x+murphy.xoffset)*32)-32, ((murphy.y+murphy.yoffset)*32)-32);}
   
-
+    if(diskIsPlanted==1)
+    {
+      if(Date.now()<diskDelay)
+        {ctx.drawImage(r_diskImage, diskX*32,diskY*32); line[diskY][diskX]=15;}
+      else{explode(diskX,diskY);diskIsPlanted=0;}
+    }
 
   // Score
 
