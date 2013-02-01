@@ -361,16 +361,16 @@ var update = function ()
       plantDisk(murphy.x-1,murphy.y-1);
       redDisks--;
     }
-
-      var mx=murphy.x-1;
+if(murphy.hit==0){
+  var mx=murphy.x-1;
   var my=murphy.y-1;
-  if(line[my+1][mx]>30&&40 in keysDown) {murphy.hit=1;explode(mx,my);}
+  if(line[my+1][mx]>32&&40 in keysDown) {murphy.hit=1;explode(mx,my);}
 
-  if(line[my-1][mx]>30&&38 in keysDown) {murphy.hit=1;explode(mx,my);}
+  if(line[my-1][mx]>32&&38 in keysDown) {murphy.hit=1;explode(mx,my);}
   
-  if(line[my][mx+1]>30&&39 in keysDown) {murphy.hit=1;explode(mx,my);}
+  if(line[my][mx+1]>32&&39 in keysDown) {murphy.hit=1;explode(mx,my);}
   
-  if(line[my][mx-1]>30&&37 in keysDown) {murphy.hit=1;explode(mx,my);}
+  if(line[my][mx-1]>32&&37 in keysDown) {murphy.hit=1;explode(mx,my);}}
   }
 };
 
@@ -523,7 +523,8 @@ if(murphy_move==1&&murphy.hit!==1)
         case 24: {ctx.drawImage(hw10Image, j*32,i*32);break;}
         case 25: {ctx.drawImage(hw11Image, j*32,i*32);break;}
 
-        case 30: {ctx.drawImage(baseImage, j*32,i*32); var rand=Math.random(); if(rand<0.015){line[i][j]++;}break;}
+        case 29: {ctx.drawImage(baseImage, j*32,i*32); var rand=Math.random(); if(rand<0.005){line[i][j]++;}break;}
+        case 30: {ctx.drawImage(baseImage, j*32,i*32); var rand=Math.random(); if(rand<0.02){line[i][j]++;}break;}
         case 31: {ctx.drawImage(bug_1Image, j*32,i*32); line[i][j]++;break;}
         case 32: {ctx.drawImage(bug_1Image, j*32,i*32); line[i][j]++;break;}
         case 33: {ctx.drawImage(bug_2Image, j*32,i*32); line[i][j]++;break;}
@@ -533,7 +534,7 @@ if(murphy_move==1&&murphy.hit!==1)
         case 37: {ctx.drawImage(bug_4Image, j*32,i*32); line[i][j]++;break;}
         case 38: {ctx.drawImage(bug_4Image, j*32,i*32); line[i][j]++;break;}
         case 39: {ctx.drawImage(bug_5Image, j*32,i*32); line[i][j]++;break;}
-        case 40: {ctx.drawImage(bug_5Image, j*32,i*32); var rand=Math.random(); if(rand<0.6){line[i][j]=33;}else{line[i][j]=30;}break;}
+        case 40: {ctx.drawImage(bug_5Image, j*32,i*32); var rand=Math.random(); if(rand<0.6){line[i][j]=33;}else{line[i][j]=29;}break;}
 
 
         case 80: {ctx.drawImage(explosion_1Image, j*32,i*32);line[i][j]++;break;}
