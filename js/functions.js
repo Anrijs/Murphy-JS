@@ -244,9 +244,9 @@ case 1://eat UP
             line[my-1][mx]=0;
             redDisks++;
           }
-          else if(line[my-1][mx]>=29&&line[my-1][mx]<=31)
+          else if(line[my-1][mx]>=39&&line[my-1][mx]<=41)
             { line[my-1][mx]=0;}
-          else if(line[my-1][mx]>32&&line[my-1][mx]<41)
+          else if(line[my-1][mx]>42&&line[my-1][mx]<51)
             {explode(mx,my);}
           break;
         }
@@ -276,9 +276,9 @@ case 1://eat UP
           redDisks++;
           line[my+1][mx]=0;
       }
-      else if(line[my+1][mx]>=29&&line[my+1][mx]<=31)
+      else if(line[my+1][mx]>=39&&line[my+1][mx]<=41)
         { line[my+1][mx]=0;}
-      else if(line[my+1][mx]>32&&line[my+1][mx]<41)
+      else if(line[my+1][mx]>42&&line[my+1][mx]<51)
         {explode(mx,my);}
       break;
     }
@@ -308,9 +308,9 @@ case 3:
             redDisks++;
             line[my][mx-1]=0;
       }
-      else if(line[my][mx-1]>=29&&line[my][mx-1]<=31)
+      else if(line[my][mx-1]>=39&&line[my][mx-1]<=41)
         { line[my][mx-1]=0;}
-      else if(line[my][mx-1]>32&&line[my][mx-1]<41)
+      else if(line[my][mx-1]>42&&line[my][mx-1]<51)
         {explode(mx,my);}
       break;
     }
@@ -340,9 +340,9 @@ case 3:
         redDisks++;
             line[my][mx+1]=0;
       }
-       else if(line[my][mx+1]>=29&& line[my][mx+1]<=31)
+       else if(line[my][mx+1]>=39&& line[my][mx+1]<=41)
         { line[my][mx+1]=0;}
-      else if(line[my][mx+1]>32&&line[my][mx+1]<41)
+      else if(line[my][mx+1]>42&&line[my][mx+1]<51)
         {explode(mx,my);}
     }
     break;
@@ -353,7 +353,7 @@ function functionMurphyPush(i)
 {
   var mx = murphy.x-1;
   var my = murphy.y-1;
-  if(line[my+1][mx]!==-1&&line[my+1][mx]!==0&&line[my+1][mx]!==1&&line[my+1][mx]!==30&&line[my+1][mx]!==29&&line[my+1][mx]!==31&&line[my+1][mx]!==6&&line[my+1][mx]!==8&&murphy_direction==2) 
+  if(line[my+1][mx]!==-1&&line[my+1][mx]!==0&&line[my+1][mx]!==1&&line[my+1][mx]!==40&&line[my+1][mx]!==39&&line[my+1][mx]!==41&&line[my+1][mx]!==6&&line[my+1][mx]!==8&&murphy_direction==2) 
     {
       if(line[my+1][mx]==7&&line[my+2][mx]==0)
       {
@@ -368,7 +368,7 @@ function functionMurphyPush(i)
       else {murphy_move=0;murphy_distance=0;}
     }
     
-  if(line[my-1][mx]!==-1&&line[my-1][mx]!==0&&line[my-1][mx]!==1&&line[my-1][mx]!==30&&line[my-1][mx]!==29&&line[my-1][mx]!==31&&line[my-1][mx]!==6&&line[my-1][mx]!==8&&murphy_direction==1) 
+  if(line[my-1][mx]!==-1&&line[my-1][mx]!==0&&line[my-1][mx]!==1&&line[my-1][mx]!==40&&line[my-1][mx]!==39&&line[my-1][mx]!==41&&line[my-1][mx]!==6&&line[my-1][mx]!==8&&murphy_direction==1) 
     {if(line[my-1][mx]==7&&line[my-2][mx]==0)
       {
         for(var i=0;i<objCount;i++)
@@ -382,7 +382,7 @@ function functionMurphyPush(i)
       else {murphy_move=0;murphy_distance=0;}
     }
 
-  if(line[my][mx+1]!==-1&&line[my][mx+1]!==0&&line[my][mx+1]!==1&&line[my][mx+1]!==30&&line[my][mx+1]!==29&&line[my][mx+1]!==31&&line[my][mx+1]!==6&&line[my][mx+1]!==8&&murphy_direction==4) 
+  if(line[my][mx+1]!==-1&&line[my][mx+1]!==0&&line[my][mx+1]!==1&&line[my][mx+1]!==40&&line[my][mx+1]!==39&&line[my][mx+1]!==41&&line[my][mx+1]!==6&&line[my][mx+1]!==8&&murphy_direction==4) 
     {
       if(line[my][mx+2]==0&&(line[my][mx+1]==5||line[my][mx+1]==4))
       {
@@ -415,7 +415,7 @@ function functionMurphyPush(i)
         murphy_distance=0;
       }
     }
-  if(line[my][mx-1]!==-1&&line[my][mx-1]!==0&&line[my][mx-1]!==1&&line[my][mx-1]!==30&&line[my][mx-1]!==29&&line[my][mx-1]!==31&&line[my][mx-1]!==6&&line[my][mx-1]!==8&&murphy_direction==3) 
+  if(line[my][mx-1]!==-1&&line[my][mx-1]!==0&&line[my][mx-1]!==1&&line[my][mx-1]!==40&&line[my][mx-1]!==39&&line[my][mx-1]!==41&&line[my][mx-1]!==6&&line[my][mx-1]!==8&&murphy_direction==3) 
     {
       if(line[my][mx-2]==0&&(line[my][mx-1]==5||line[my][mx-1]==4))
       {
@@ -518,4 +518,118 @@ function plantDisk(x,y)
   diskX=x;
   diskY=y;
   line[y][x]=4;
+}
+
+function aiMove(i)
+{
+  var cx = aiObject[i].x;
+  var cy = aiObject[i].y;
+
+
+if(aiObject[i].move==0){ aiCheckSides(i,cx,cy);}
+
+
+if(aiObject[i].turn==1)
+{
+    //aiCheckSides(i,cx,cy);
+    switch(aiObject[i].direction)
+    {
+      case 1: {aiObject[i].direction=4;break;}
+      case 2: {aiObject[i].direction=1;break;}
+      case 3: {aiObject[i].direction=2;break;}
+      case 4: {aiObject[i].direction=3;break;}
+    }
+    aiObject[i].turn=0;
+   aiObject[i].move = 1;
+}
+else {aiObject[i].move = 1;}
+
+if(aiObject[i].moveDistance==0&&line[cy+1][cx]!==0&&line[cy-1][cx]!==0&&line[cy][cx+1]!==0&&line[cy][cx-1]!==0&&line[cy+1][cx]!==9&&line[cy-1][cx]!==9&&line[cy][cx+1]!==9&&line[cy][cx-1]!==9)
+{
+    aiObject[i].move=0;
+}
+
+
+  //AI Advace depending on new direction
+if(aiObject[i].move==1)
+  {
+  if(aiObject[i].moveDistance<9)
+    {
+    if(line[cy+1][cx]!==28&&line[cy-1][cx]!==28&&line[cy][cx+1]!==28&&line[cy][cx-1]!==28&&line[cy+1][cx]!==0&&line[cy-1][cx]!==0&&line[cy][cx+1]!==0&&line[cy][cx-1]!==0&&line[cy+1][cx]!==9&&line[cy-1][cx]!==9&&line[cy][cx+1]!==9&&line[cy][cx-1]!==9)
+    {
+    aiObject[i].move=0;
+    }
+      aiObject[i].moveDistance++;
+      switch (aiObject[i].direction)
+      {
+        case 1: {aiObject[i].yoffset-=moveSpeed;if(line[cy-1][cx]==9){explode(cx,cy-1);}line[cy-1][cx]=28;break;}
+        case 2: {aiObject[i].xoffset+=moveSpeed;if(line[cy][cx+1]==9){explode(cx+1,cy);}line[cy][cx+1]=28;break;}
+        case 3: {aiObject[i].yoffset+=moveSpeed;if(line[cy+1][cx]==9){explode(cx,cy+1);}line[cy+1][cx]=28;break;}
+        case 4: {aiObject[i].xoffset-=moveSpeed;if(line[cy][cx-1]==9){explode(cx-1,cy);}line[cy][cx-1]=28;break;}
+      }
+    }
+    else
+    {
+      line[cy][cx]=0;
+      aiObject[i].x+=Math.round(aiObject[i].xoffset);
+      aiObject[i].y+=Math.round(aiObject[i].yoffset);
+      cx = aiObject[i].x;
+      cy = aiObject[i].y;
+      line[cy][cx]=aiObject[i].id;
+      aiObject[i].xoffset = 0;
+      aiObject[i].yoffset = 0;
+      aiObject[i].moveDistance=0;
+      aiObject[i].move=0;
+    //  aiCheckSides(i,cx,cy);
+    }
+  }
+}
+
+var aiCheckSides = function(i,cx,cy)
+{
+  if(line[cy+1][cx]!==0&&line[cy-1][cx]!==0&&line[cy][cx+1]!==0&&line[cy][cx-1]!==0&&line[cy+1][cx]!==9&&line[cy-1][cx]!==9&&line[cy][cx+1]!==9&&line[cy][cx-1]!==9)
+  {
+    aiObject[i].move=0;
+  }
+  else {
+  switch (aiObject[i].direction)
+  {
+    case 1: //Up
+    {
+      if(line[cy][cx-1]==0||line[cy][cx-1]==9)
+        {aiObject[i].turn=1;}
+      else if(line[cy-1][cx]==0||line[cy-1][cx]==9)
+        {aiObject[i].move=1;}
+      else if(line[cy][cx+1]==0||line[cy][cx+1]==9) {aiObject[i].direction=2;}
+      else {aiObject[i].direction=3;}
+      break;}
+    case 2: //Right
+    {
+      if(line[cy-1][cx]==0||line[cy-1][cx]==9)
+        {aiObject[i].turn=1;}
+      else if(line[cy][cx+1]==0||line[cy][cx+1]==9)
+        {aiObject[i].move=1;}
+      else if(line[cy+1][cx]==0||line[cy+1][cx]==9){aiObject[i].direction=3;}
+      else {aiObject[i].direction=4;}
+      break;}
+    case 3: //Down
+    {
+       if(line[cy][cx+1]==0||line[cy][cx+1]==9)
+        {aiObject[i].turn=1;}
+      else if(line[cy+1][cx]==0||line[cy+1][cx]==9)
+        {aiObject[i].move=1;}
+      else if(line[cy][cx-1]==0||line[cy][cx-1]==9){aiObject[i].direction=4;}
+      else {aiObject[i].direction=1;}
+      break;}
+    case 4: //Left
+    {
+      if(line[cy+1][cx]==0||line[cy+1][cx]==9)
+        {aiObject[i].turn=1;}
+      else if(line[cy][cx-1]==0||line[cy][cx-1]==9)
+        {aiObject[i].move=1;}
+      else if(line[cy-1][cx]==0||line[cy-1][cx]==9){aiObject[i].direction=1;}
+      else {aiObject[i].direction=2;}
+      break;}
+  }
+}
 }

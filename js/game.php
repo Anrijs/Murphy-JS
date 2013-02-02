@@ -28,7 +28,7 @@ while($i<$totalLevels+1)
   echo "var totalLevels=".$totalLevels;
 ?>
 
- var version = 'Alpha v1.4';
+ var version = 'Alpha v1.5pre1';
 
 var murphy = [];
 murphy.x=2;
@@ -56,6 +56,8 @@ var levelsAvaible = <?php echo $levelsAvaible;?> ;
 var diskIsPlanted = 0;
 var diskX=0;
 var diskY=0;
+
+var menuFrame = 0;
 
 var errorMsg = "";
 
@@ -85,10 +87,27 @@ var fallObj = function()
     this.preFall = 0;
 }
 
+var aiObj = function()
+{
+  this.id = 0;
+  this.x = -1;
+  this.y = -1;
+  this.moveDistance = 0;
+  this.xoffset = 0;
+  this.yoffset = 0;
+  this.direction = 1;
+  this.move=0;
+  this.turn=0;
+}
+
 var fallObject = [];
+var aiObject = [];
+
 //include("js/loadlevel.js");
 var bsod=0;
 var objCount;
+var aiCount;
+
 var line = [];
 var requiredInfotrons  = 0;
 
@@ -133,7 +152,7 @@ var loadLevel = function ()
   <?php echo $levels; ?>
   }
 
-
+aiCount=0;
 objCount=0;
 for(var i=1;i<19;i++)
  {
@@ -184,6 +203,15 @@ for(var i=1;i<19;i++)
                 {
                   murphy.x=j+1;
                   murphy.y=i+1;
+                  break;
+                }
+        case 27:
+                {
+                  aiObject[aiCount] = new aiObj;
+                  aiObject[aiCount].id = 27;
+                  aiObject[aiCount].x = j;
+                  aiObject[aiCount].y = i;
+                  aiCount++;
                   break;
                 }
      }
@@ -364,13 +392,13 @@ var update = function ()
 if(murphy.hit==0){
   var mx=murphy.x-1;
   var my=murphy.y-1;
-  if(line[my+1][mx]>32&&40 in keysDown) {murphy.hit=1;explode(mx,my);}
+  if((line[my+1][mx]>42||line[my+1][mx]==27||line[my+1][mx]==28)&&40 in keysDown) {murphy.hit=1;explode(mx,my);}
 
-  if(line[my-1][mx]>32&&38 in keysDown) {murphy.hit=1;explode(mx,my);}
+  if((line[my-1][mx]>42||line[my-1][mx]==27||line[my-1][mx]==28)&&38 in keysDown) {murphy.hit=1;explode(mx,my);}
   
-  if(line[my][mx+1]>32&&39 in keysDown) {murphy.hit=1;explode(mx,my);}
+  if((line[my][mx+1]>42||line[my][mx+1]==27||line[my][mx+1]==28)&&39 in keysDown) {murphy.hit=1;explode(mx,my);}
   
-  if(line[my][mx-1]>32&&37 in keysDown) {murphy.hit=1;explode(mx,my);}}
+  if((line[my][mx-1]>42||line[my][mx-1]==27||line[my][mx-1]==28)&&37 in keysDown) {murphy.hit=1;explode(mx,my);}}
   }
 };
 
@@ -432,6 +460,16 @@ for(var i=0;i<objCount;i++)
       {
        functionFallLeft(i,cx,cy);
     }
+}
+
+for(var i=0;i<aiCount;i++)
+{
+  aiMove(i);
+}
+
+if(line[murphy.y-1][murphy.x-1]==27||line[murphy.y-1][murphy.x-1]==28)
+{
+  explode(murphy.x-1,murphy.y-1);
 }
 
 if(murphy_pull==1)
@@ -522,19 +560,19 @@ if(murphy_move==1&&murphy.hit!==1)
         case 23: {ctx.drawImage(hw9Image, j*32,i*32);break;}
         case 24: {ctx.drawImage(hw10Image, j*32,i*32);break;}
         case 25: {ctx.drawImage(hw11Image, j*32,i*32);break;}
-
-        case 29: {ctx.drawImage(baseImage, j*32,i*32); var rand=Math.random(); if(rand<0.005){line[i][j]++;}break;}
-        case 30: {ctx.drawImage(baseImage, j*32,i*32); var rand=Math.random(); if(rand<0.02){line[i][j]++;}break;}
-        case 31: {ctx.drawImage(bug_1Image, j*32,i*32); line[i][j]++;break;}
-        case 32: {ctx.drawImage(bug_1Image, j*32,i*32); line[i][j]++;break;}
-        case 33: {ctx.drawImage(bug_2Image, j*32,i*32); line[i][j]++;break;}
-        case 34: {ctx.drawImage(bug_2Image, j*32,i*32); line[i][j]++;break;}
-        case 35: {ctx.drawImage(bug_3Image, j*32,i*32); line[i][j]++;break;}
-        case 36: {ctx.drawImage(bug_3Image, j*32,i*32); line[i][j]++;break;}
-        case 37: {ctx.drawImage(bug_4Image, j*32,i*32); line[i][j]++;break;}
-        case 38: {ctx.drawImage(bug_4Image, j*32,i*32); line[i][j]++;break;}
-        case 39: {ctx.drawImage(bug_5Image, j*32,i*32); line[i][j]++;break;}
-        case 40: {ctx.drawImage(bug_5Image, j*32,i*32); var rand=Math.random(); if(rand<0.6){line[i][j]=33;}else{line[i][j]=29;}break;}
+//case 27: {ctx.drawImage(hw11Image, j*32,i*32);break;}
+        case 39: {ctx.drawImage(baseImage, j*32,i*32); var rand=Math.random(); if(rand<0.005){line[i][j]++;}break;}
+        case 40: {ctx.drawImage(baseImage, j*32,i*32); var rand=Math.random(); if(rand<0.02){line[i][j]++;}break;}
+        case 41: {ctx.drawImage(bug_1Image, j*32,i*32); line[i][j]++;break;}
+        case 42: {ctx.drawImage(bug_1Image, j*32,i*32); line[i][j]++;break;}
+        case 43: {ctx.drawImage(bug_2Image, j*32,i*32); line[i][j]++;break;}
+        case 44: {ctx.drawImage(bug_2Image, j*32,i*32); line[i][j]++;break;}
+        case 45: {ctx.drawImage(bug_3Image, j*32,i*32); line[i][j]++;break;}
+        case 46: {ctx.drawImage(bug_3Image, j*32,i*32); line[i][j]++;break;}
+        case 47: {ctx.drawImage(bug_4Image, j*32,i*32); line[i][j]++;break;}
+        case 48: {ctx.drawImage(bug_4Image, j*32,i*32); line[i][j]++;break;}
+        case 49: {ctx.drawImage(bug_5Image, j*32,i*32); line[i][j]++;break;}
+        case 50: {ctx.drawImage(bug_5Image, j*32,i*32); var rand=Math.random(); if(rand<0.6){line[i][j]=43;}else{line[i][j]=39;}break;}
 
 
         case 80: {ctx.drawImage(explosion_1Image, j*32,i*32);line[i][j]++;break;}
@@ -587,7 +625,72 @@ if(murphy_move==1&&murphy.hit!==1)
     }
   }
 
-
+  for(var i=0;i<aiCount;i++)
+  {
+    switch (aiObject[i].id)
+    {
+      case 27: { switch(aiObject[i].direction)
+                    {
+                      case 1: { switch(aiObject[i].moveDistance) 
+                                  {
+                                    case 1: {ctx.drawImage(sniksnak_up_0Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 2: {ctx.drawImage(sniksnak_up_3Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 3: {ctx.drawImage(sniksnak_up_2Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 4: {ctx.drawImage(sniksnak_up_1Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 5: {ctx.drawImage(sniksnak_up_1Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 6: {ctx.drawImage(sniksnak_up_2Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 7: {ctx.drawImage(sniksnak_up_2Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 8: {ctx.drawImage(sniksnak_up_3Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 9: {ctx.drawImage(sniksnak_up_3Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 0: {ctx.drawImage(sniksnak_up_0Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                     }
+                              }break;
+                      case 2: { switch(aiObject[i].moveDistance) 
+                                  {
+                                    case 1: {ctx.drawImage(sniksnak_right_0Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 2: {ctx.drawImage(sniksnak_right_3Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 3: {ctx.drawImage(sniksnak_right_2Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 4: {ctx.drawImage(sniksnak_right_1Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 5: {ctx.drawImage(sniksnak_right_1Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 6: {ctx.drawImage(sniksnak_right_2Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 7: {ctx.drawImage(sniksnak_right_2Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 8: {ctx.drawImage(sniksnak_right_3Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 9: {ctx.drawImage(sniksnak_right_3Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 0: {ctx.drawImage(sniksnak_right_0Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                     }
+                              }break;
+                      case 3: { switch(aiObject[i].moveDistance) 
+                                  {
+                                    case 1: {ctx.drawImage(sniksnak_down_0Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 2: {ctx.drawImage(sniksnak_down_3Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 3: {ctx.drawImage(sniksnak_down_2Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 4: {ctx.drawImage(sniksnak_down_1Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 5: {ctx.drawImage(sniksnak_down_1Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 6: {ctx.drawImage(sniksnak_down_2Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 7: {ctx.drawImage(sniksnak_down_2Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 8: {ctx.drawImage(sniksnak_down_3Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 9: {ctx.drawImage(sniksnak_down_3Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 0: {ctx.drawImage(sniksnak_down_0Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                     }
+                              }break;
+                      case 4: { switch(aiObject[i].moveDistance) 
+                                  {
+                                    case 1: {ctx.drawImage(sniksnak_left_0Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 2: {ctx.drawImage(sniksnak_left_3Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 3: {ctx.drawImage(sniksnak_left_2Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 4: {ctx.drawImage(sniksnak_left_1Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 5: {ctx.drawImage(sniksnak_left_1Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 6: {ctx.drawImage(sniksnak_left_2Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 7: {ctx.drawImage(sniksnak_left_2Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 8: {ctx.drawImage(sniksnak_left_3Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 9: {ctx.drawImage(sniksnak_left_3Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 0: {ctx.drawImage(sniksnak_left_0Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                     }
+                              }break;
+                    }
+                    break;}
+    }
+  }
 
   for(var i=0;i<objCount;i++)
   {
@@ -782,28 +885,9 @@ setInterval(main,1000/40);
 
 var explode = function(ex,ey)
 {
-
-  for(var i=0;i<objCount;i++)
-  {
-    var fx = fallObject[i].x;
-    var fy = fallObject[i].y;
+  
     var mx = murphy.x-1;
     var my = murphy.y-1;
-
-    //Trigger nearbly explosives                                                                         
- //src if(fallObject[i].id==7||fallObject[i].id==4){
-    if(fx==ex-1&&fy==ey-1)  {fallObject[i].x=-1;}
-    if(fx==ex&&fy==ey-1  )  {fallObject[i].x=-1;}
-    if(fx==ex+1&&fy==ey-1)  {fallObject[i].x=-1;}                                       
-    if(fx==ex-1&&fy==ey  )  {fallObject[i].x=-1;}
-    if(fx==ex&&fy==ey) {fallObject[i].x=-1;} 
-    if(fx==ex+1&&fy==ey  )  {fallObject[i].x=-1;}                                        
-    if(fx==ex-1&&fy==ey+1)  {fallObject[i].x=-1;}
-    if(fx==ex&&fy==ey+1  )  {fallObject[i].x=-1;}
-    if(fx==ex+1&&fy==ey+1)  {fallObject[i].x=-1;}
-  //}
-
-
     if(mx==ex-1&&my==ey-1) {murphy.hit=1;}
     if(mx==ex&&  my==ey-1) {murphy.hit=1;}
     if(mx==ex+1&&my==ey-1) {murphy.hit=1;}
@@ -815,33 +899,62 @@ var explode = function(ex,ey)
     if(mx==ex-1&&my==ey+1) {murphy.hit=1;}
     if(mx==ex&&  my==ey+1) {murphy.hit=1;}
     if(mx==ex+1&&my==ey+1) {murphy.hit=1;}
+
+      for(var i=0;i<aiCount;i++)
+  {
+    var fx = aiObject[i].x;
+    var fy = aiObject[i].y;
+    if(fx==ex-1&&fy==ey-1)  {aiObject[i].x=-2;explode(fx,fy);}
+    if(fx==ex&&fy==ey-1  )  {aiObject[i].x=-2;explode(fx,fy);}
+    if(fx==ex+1&&fy==ey-1)  {aiObject[i].x=-2;explode(fx,fy);}                                       
+    if(fx==ex-1&&fy==ey  )  {aiObject[i].x=-2;explode(fx,fy);}
+    if(fx==ex&&fy==ey)      {aiObject[i].x=-2;explode(fx,fy);} 
+    if(fx==ex+1&&fy==ey  )  {aiObject[i].x=-2;explode(fx,fy);}                                        
+    if(fx==ex-1&&fy==ey+1)  {aiObject[i].x=-2;explode(fx,fy);}
+    if(fx==ex&&fy==ey+1  )  {aiObject[i].x=-2;explode(fx,fy);}
+    if(fx==ex+1&&fy==ey+1)  {aiObject[i].x=-2;explode(fx,fy);}
   }
 
+  for(var i=0;i<objCount;i++)
+  {
+    var fx = fallObject[i].x;
+    var fy = fallObject[i].y;
 
-  if((line[ey-1][ex-1]>109||line[ey-1][ex-1]<15||(line[ey-1][ex-1]>25&&line[ey-1][ex-1]<41))&&line[ey-1][ex-1]!==7&&line[ey-1][ex-1]!==4)   {line[ey-1][ex-1]=101;}
+    if(fx==ex-1&&fy==ey-1)  {fallObject[i].x=-1;}
+    if(fx==ex&&fy==ey-1  )  {fallObject[i].x=-1;}
+    if(fx==ex+1&&fy==ey-1)  {fallObject[i].x=-1;}                                       
+    if(fx==ex-1&&fy==ey  )  {fallObject[i].x=-1;}
+    if(fx==ex&&fy==ey) {fallObject[i].x=-1;} 
+    if(fx==ex+1&&fy==ey  )  {fallObject[i].x=-1;}                                        
+    if(fx==ex-1&&fy==ey+1)  {fallObject[i].x=-1;}
+    if(fx==ex&&fy==ey+1  )  {fallObject[i].x=-1;}
+    if(fx==ex+1&&fy==ey+1)  {fallObject[i].x=-1;}
+  }
+
+  if((line[ey-1][ex-1]==27||line[ey-1][ex-1]>109||line[ey-1][ex-1]<15||(line[ey-1][ex-1]>25&&line[ey-1][ex-1]<41))&&line[ey-1][ex-1]!==7&&line[ey-1][ex-1]!==4)   {line[ey-1][ex-1]=101;}
   else if(line[ey-1][ex-1]<15&&(line[ey-1][ex-1]==7||line[ey-1][ex-1]==4))   {line[ey-1][ex-1]=81;}
 //  
-  if((line[ey-1][ex  ]>109||line[ey-1][ex  ]<15||(line[ey-1][ex  ]>25&&line[ey-1][ex  ]<41))&&line[ey-1][ex  ]!==7&&line[ey-1][ex  ]!==4)   {line[ey-1][ex]=  101;}
+  if((line[ey-1][ex  ]==27||line[ey-1][ex  ]>109||line[ey-1][ex  ]<15||(line[ey-1][ex  ]>25&&line[ey-1][ex  ]<41))&&line[ey-1][ex  ]!==7&&line[ey-1][ex  ]!==4)   {line[ey-1][ex]=  101;}
   else if(line[ey-1][ex  ]<15&&(line[ey-1][ex  ]==7||line[ey-1][ex  ]==4))   {line[ey-1][ex]=  81;}
 //
-  if((line[ey-1][ex+1]>109||line[ey-1][ex+1]<15||(line[ey-1][ex+1]>25&&line[ey-1][ex+1]<41))&&line[ey-1][ex+1]!==7&&line[ey-1][ex+1]!==4)   {line[ey-1][ex+1]=101;}
+  if((line[ey-1][ex+1]==27||line[ey-1][ex+1]>109||line[ey-1][ex+1]<15||(line[ey-1][ex+1]>25&&line[ey-1][ex+1]<41))&&line[ey-1][ex+1]!==7&&line[ey-1][ex+1]!==4)   {line[ey-1][ex+1]=101;}
   else if(line[ey-1][ex+1]<15&&(line[ey-1][ex+1]==7||line[ey-1][ex+1]==4))   {line[ey-1][ex+1]=81;}
 //
-  if((line[ey  ][ex-1]>109||line[ey  ][ex-1]<15||(line[ey  ][ex-1]>25&&line[ey  ][ex-1]<41))&&line[ey  ][ex-1]!==7&&line[ey  ][ex-1]!==4)   {line[ey  ][ex-1]=101;}
+  if((line[ey  ][ex-1]==27||line[ey  ][ex-1]>109||line[ey  ][ex-1]<15||(line[ey  ][ex-1]>25&&line[ey  ][ex-1]<41))&&line[ey  ][ex-1]!==7&&line[ey  ][ex-1]!==4)   {line[ey  ][ex-1]=101;}
   else if(line[ey  ][ex-1]<15&&(line[ey  ][ex-1]==7||line[ey  ][ex-1]==4))   {line[ey  ][ex-1]=81;}
 //
   line[ey][ex]=  101;
 //
-  if((line[ey  ][ex+1]>109||line[ey  ][ex+1]<15||(line[ey  ][ex+1]>25&&line[ey  ][ex+1]<41))&&line[ey  ][ex+1]!==7&&line[ey  ][ex+1]!==4)   {line[ey  ][ex+1]=101;}
+  if((line[ey  ][ex+1]==27||line[ey  ][ex+1]>109||line[ey  ][ex+1]<15||(line[ey  ][ex+1]>25&&line[ey  ][ex+1]<41))&&line[ey  ][ex+1]!==7&&line[ey  ][ex+1]!==4)   {line[ey  ][ex+1]=101;}
   else if(line[ey  ][ex+1]<15&&(line[ey  ][ex+1]==7||line[ey  ][ex+1]==4))   {line[ey  ][ex+1]=81;}
 //
-  if((line[ey+1][ex-1]>109||line[ey+1][ex-1]<15||(line[ey+1][ex-1]>25&&line[ey+1][ex-1]<41))&&line[ey+1][ex-1]!==7&&line[ey+1][ex-1]!==4)   {line[ey+1][ex-1]=101;}
+  if((line[ey+1][ex-1]==27||line[ey+1][ex-1]>109||line[ey+1][ex-1]<15||(line[ey+1][ex-1]>25&&line[ey+1][ex-1]<41))&&line[ey+1][ex-1]!==7&&line[ey+1][ex-1]!==4)   {line[ey+1][ex-1]=101;}
   else if(line[ey+1][ex-1]<15&&(line[ey+1][ex-1]==7||line[ey+1][ex-1]==4))   {line[ey+1][ex-1]=81;}
 //
-  if((line[ey+1][ex  ]>109||line[ey+1][ex  ]<15||(line[ey+1][ex  ]>25&&line[ey+1][ex  ]<41))&&line[ey+1][ex  ]!==7&&line[ey+1][ex  ]!==4)   {line[ey+1][ex]=  101;}
+  if((line[ey+1][ex  ]==27||line[ey+1][ex  ]>109||line[ey+1][ex  ]<15||(line[ey+1][ex  ]>25&&line[ey+1][ex  ]<41))&&line[ey+1][ex  ]!==7&&line[ey+1][ex  ]!==4)   {line[ey+1][ex]=  101;}
   else if(line[ey+1][ex  ]<15&&(line[ey+1][ex  ]==7||line[ey+1][ex  ]==4))   {line[ey+1][ex]=  81;}
 //
-  if((line[ey+1][ex+1]>109||line[ey+1][ex+1]<15||(line[ey+1][ex+1]>25&&line[ey+1][ex+1]<41))&&line[ey+1][ex+1]!==7&&line[ey+1][ex+1]!==4)   {line[ey+1][ex+1]=101;}
+  if((line[ey+1][ex+1]==27||line[ey+1][ex+1]>109||line[ey+1][ex+1]<15||(line[ey+1][ex+1]>25&&line[ey+1][ex+1]<41))&&line[ey+1][ex+1]!==7&&line[ey+1][ex+1]!==4)   {line[ey+1][ex+1]=101;}
   else if(line[ey+1][ex+1]<15&&(line[ey+1][ex+1]==7||line[ey+1][ex+1]==4))   {line[ey+1][ex+1]=81;}
 };
 
@@ -861,8 +974,14 @@ var drawMenu = function ()
 
   ctx.fillStyle = '#f80'
   ctx.font = "20px Courier New Bold";
-  ctx.fillText("Now 200% more bugs!", 240,50);
-  ctx.drawImage(splash_bugImage, 470, 48);
+  ctx.fillText("Snik-snak?", 240,50);
+  if(menuFrame<2)        {ctx.drawImage(sniksnak_left_0Image, 363, 46);menuFrame++;}
+  else if(menuFrame<4)  {ctx.drawImage(sniksnak_left_3Image, 363, 46);menuFrame++;}
+  else if(menuFrame<8)  {ctx.drawImage(sniksnak_left_2Image, 363, 46);menuFrame++;}
+  else if(menuFrame<11)  {ctx.drawImage(sniksnak_left_1Image, 363, 46);menuFrame++;}
+  else if(menuFrame<14)  {ctx.drawImage(sniksnak_left_2Image, 363, 46);menuFrame++;}
+  else if(menuFrame<17)  {ctx.drawImage(sniksnak_left_3Image, 363, 46);menuFrame++;}
+  else if(menuFrame==17)  {ctx.drawImage(sniksnak_left_3Image, 363, 46);menuFrame=0;}
 
   ctx.fillStyle = '#dd4';
   ctx.font = "16px Helvetica, Bold";
@@ -987,3 +1106,35 @@ var drawBSOD   = function ()
 
 
 
+// 1: Base 
+// 2: Terminal
+// 3: Exit
+// 4: Orange Disk
+// 5: Zonk
+// 6: Infotron
+// 7: Yellow disk
+// 8: Red Disk
+// 9: Murphy
+
+// 10..14 Chip
+// 15..25: Hardware
+
+// 26: Snik-Snak
+// 27: Electrons
+
+// 28: Port 1
+// 29: Port 2
+// 30: Port 3
+// 31: Port 4
+// 32: Port 5
+// 33: Port 6
+// 34: Port 7
+// 35: Port 8
+// 36: Port 9
+// 37: Port 10
+// 38: Port 11
+
+// 39..50: Bug
+// 80..93:explosion to new explosion
+// 101..114: Explosion
+// 121..134: Exit

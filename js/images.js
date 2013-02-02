@@ -269,3 +269,52 @@ bug_5Image.src = "img/bug_5.png";
 
 var splash_bugImage = new Image();
 splash_bugImage.src = "img/splash_bug.png";    
+
+var sniksnak_up_0Image = new Image();
+sniksnak_up_0Image.src = "img/sniksnak_up_0.png";  
+
+var sniksnak_up_1Image = new Image();
+sniksnak_up_1Image.src = "img/sniksnak_up_1.png";     
+
+var sniksnak_up_2Image = new Image();
+sniksnak_up_2Image.src = "img/sniksnak_up_2.png";     
+
+var sniksnak_up_3Image = new Image();
+sniksnak_up_3Image.src = "img/sniksnak_up_3.png";
+
+
+var sniksnak_down_0Image = new Image();
+sniksnak_down_0Image.src = "img/sniksnak_down_0.png";  
+
+var sniksnak_down_1Image = new Image();
+sniksnak_down_1Image.src = "img/sniksnak_down_1.png";     
+
+var sniksnak_down_2Image = new Image();
+sniksnak_down_2Image.src = "img/sniksnak_down_2.png";     
+
+var sniksnak_down_3Image = new Image();
+sniksnak_down_3Image.src = "img/sniksnak_down_3.png";       
+
+var sniksnak_left_0Image = new Image();
+sniksnak_left_0Image.src = "img/sniksnak_left_0.png";  
+
+var sniksnak_left_1Image = new Image();
+sniksnak_left_1Image.src = "img/sniksnak_left_1.png";     
+
+var sniksnak_left_2Image = new Image();
+sniksnak_left_2Image.src = "img/sniksnak_left_2.png";     
+
+var sniksnak_left_3Image = new Image();
+sniksnak_left_3Image.src = "img/sniksnak_left_3.png";       
+
+var sniksnak_right_0Image = new Image();
+sniksnak_right_0Image.src = "img/sniksnak_right_0.png";  
+
+var sniksnak_right_1Image = new Image();
+sniksnak_right_1Image.src = "img/sniksnak_right_1.png";     
+
+var sniksnak_right_2Image = new Image();
+sniksnak_right_2Image.src = "img/sniksnak_right_2.png";     
+
+var sniksnak_right_3Image = new Image();
+sniksnak_right_3Image.src = "img/sniksnak_right_3.png";       
