@@ -317,4 +317,49 @@ var sniksnak_right_2Image = new Image();
 sniksnak_right_2Image.src = "img/sniksnak_right_2.png";     
 
 var sniksnak_right_3Image = new Image();
-sniksnak_right_3Image.src = "img/sniksnak_right_3.png";       
+sniksnak_right_3Image.src = "img/sniksnak_right_3.png";
+
+var electrons_0Image = new Image();
+electrons_0Image.src = "img/electrons_0.png"; 
+
+var electrons_1Image = new Image();
+electrons_1Image.src = "img/electrons_1.png";     
+
+var electrons_2Image = new Image();
+electrons_2Image.src = "img/electrons_2.png";     
+
+var electrons_3Image = new Image();
+electrons_3Image.src = "img/electrons_3.png";     
+
+var electrons_4Image = new Image();
+electrons_4Image.src = "img/electrons_4.png";     
+
+var electrons_5Image = new Image();
+electrons_5Image.src = "img/electrons_5.png";  
+
+var electrons_6Image = new Image();
+electrons_6Image.src = "img/electrons_6.png";
+
+var electrons_7Image = new Image();
+electrons_7Image.src = "img/electrons_7.png";
+
+var infotron_explosion_1Image = new Image();
+infotron_explosion_1Image.src = "img/infotron_explosion_1.png";     
+
+var infotron_explosion_2Image = new Image();
+infotron_explosion_2Image.src = "img/infotron_explosion_2.png";     
+
+var infotron_explosion_3Image = new Image();
+infotron_explosion_3Image.src = "img/infotron_explosion_3.png";     
+
+var infotron_explosion_4Image = new Image();
+infotron_explosion_4Image.src = "img/infotron_explosion_4.png";     
+
+var infotron_explosion_5Image = new Image();
+infotron_explosion_5Image.src = "img/infotron_explosion_5.png";     
+
+var infotron_explosion_6Image = new Image();
+infotron_explosion_6Image.src = "img/infotron_explosion_6.png";     
+
+var infotron_explosion_7Image = new Image();
+infotron_explosion_7Image.src = "img/infotron_explosion_7.png";     
