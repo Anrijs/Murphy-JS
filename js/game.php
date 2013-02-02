@@ -154,7 +154,7 @@ var loadLevel = function ()
 
 aiCount=0;
 objCount=0;
-for(var i=1;i<19;i++)
+for(var i=0;i<19;i++)
  {
    for(var j=0;j<32;j++)
    {
@@ -392,13 +392,13 @@ var update = function ()
 if(murphy.hit==0){
   var mx=murphy.x-1;
   var my=murphy.y-1;
-  if((line[my+1][mx]>42||line[my+1][mx]==27||line[my+1][mx]==28)&&40 in keysDown) {murphy.hit=1;explode(mx,my);}
+  if((line[my+1][mx]>42)&&40 in keysDown) {murphy.hit=1;explode(mx,my);}
 
-  if((line[my-1][mx]>42||line[my-1][mx]==27||line[my-1][mx]==28)&&38 in keysDown) {murphy.hit=1;explode(mx,my);}
+  if((line[my-1][mx]>42)&&38 in keysDown) {murphy.hit=1;explode(mx,my);}
   
-  if((line[my][mx+1]>42||line[my][mx+1]==27||line[my][mx+1]==28)&&39 in keysDown) {murphy.hit=1;explode(mx,my);}
+  if((line[my][mx+1]>42)&&39 in keysDown) {murphy.hit=1;explode(mx,my);}
   
-  if((line[my][mx-1]>42||line[my][mx-1]==27||line[my][mx-1]==28)&&37 in keysDown) {murphy.hit=1;explode(mx,my);}}
+  if((line[my][mx-1]>42)&&37 in keysDown) {murphy.hit=1;explode(mx,my);}}
   }
 };
 
@@ -467,7 +467,7 @@ for(var i=0;i<aiCount;i++)
   aiMove(i);
 }
 
-if(line[murphy.y-1][murphy.x-1]==27||line[murphy.y-1][murphy.x-1]==28)
+if(line[murphy.y-1][murphy.x-1]==27||(line[murphy.y-1][murphy.x-1]==28&&murphy_distance<4))
 {
   explode(murphy.x-1,murphy.y-1);
 }
@@ -530,7 +530,7 @@ if(murphy_move==1&&murphy.hit!==1)
   functionMurphyMove();
 }
 
-    ctx.drawImage(bgImage, 0, 0);
+ctx.drawImage(bgImage, 0, 0);
 
 
   for(var i=0;i<19;i++)
@@ -573,7 +573,6 @@ if(murphy_move==1&&murphy.hit!==1)
         case 48: {ctx.drawImage(bug_4Image, j*32,i*32); line[i][j]++;break;}
         case 49: {ctx.drawImage(bug_5Image, j*32,i*32); line[i][j]++;break;}
         case 50: {ctx.drawImage(bug_5Image, j*32,i*32); var rand=Math.random(); if(rand<0.6){line[i][j]=43;}else{line[i][j]=39;}break;}
-
 
         case 80: {ctx.drawImage(explosion_1Image, j*32,i*32);line[i][j]++;break;}
         case 81: {ctx.drawImage(explosion_1Image, j*32,i*32);line[i][j]++;break;}
@@ -643,6 +642,7 @@ if(murphy_move==1&&murphy.hit!==1)
                                     case 8: {ctx.drawImage(sniksnak_up_3Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
                                     case 9: {ctx.drawImage(sniksnak_up_3Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
                                     case 0: {ctx.drawImage(sniksnak_up_0Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 10: {ctx.drawImage(sniksnak_up_0Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
                                      }
                               }break;
                       case 2: { switch(aiObject[i].moveDistance) 
@@ -657,6 +657,7 @@ if(murphy_move==1&&murphy.hit!==1)
                                     case 8: {ctx.drawImage(sniksnak_right_3Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
                                     case 9: {ctx.drawImage(sniksnak_right_3Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
                                     case 0: {ctx.drawImage(sniksnak_right_0Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 10: {ctx.drawImage(sniksnak_right_0Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
                                      }
                               }break;
                       case 3: { switch(aiObject[i].moveDistance) 
@@ -671,6 +672,7 @@ if(murphy_move==1&&murphy.hit!==1)
                                     case 8: {ctx.drawImage(sniksnak_down_3Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
                                     case 9: {ctx.drawImage(sniksnak_down_3Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
                                     case 0: {ctx.drawImage(sniksnak_down_0Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 10: {ctx.drawImage(sniksnak_down_0Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
                                      }
                               }break;
                       case 4: { switch(aiObject[i].moveDistance) 
@@ -685,6 +687,7 @@ if(murphy_move==1&&murphy.hit!==1)
                                     case 8: {ctx.drawImage(sniksnak_left_3Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
                                     case 9: {ctx.drawImage(sniksnak_left_3Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
                                     case 0: {ctx.drawImage(sniksnak_left_0Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
+                                    case 10: {ctx.drawImage(sniksnak_left_0Image, (aiObject[i].x+aiObject[i].xoffset)*32, (aiObject[i].y+aiObject[i].yoffset)*32);break;}
                                      }
                               }break;
                     }
@@ -885,26 +888,26 @@ setInterval(main,1000/40);
 
 var explode = function(ex,ey)
 { 
-    if(line[ey+2][ex-2]==28) {line[ey+2][ex-2]=0;}
-    if(line[ey+2][ex-1]==28) {line[ey+2][ex-1]=0;}
-    if(line[ey+2][ex]==28)   {line[ey+2][ex]=0;}
-    if(line[ey+2][ex+1]==28) {line[ey+2][ex+1]=0;}
-    if(line[ey+2][ex+2]==28) {line[ey+2][ex+2]=0;}
+    if(ey<16&&ex>1&&line[ey+2][ex-2]==28) {line[ey+2][ex-2]=0;}
+    if(ey<16&&ex>0&&line[ey+2][ex-1]==28) {line[ey+2][ex-1]=0;}
+    if(ey<16&&line[ey+2][ex]==28)   {line[ey+2][ex]=0;}
+    if(ex<30&&ey<16&&line[ey+2][ex+1]==28) {line[ey+2][ex+1]=0;}
+    if(ex<29&&ey<16&&line[ey+2][ex+2]==28) {line[ey+2][ex+2]=0;}
 
-    if(line[ey+1][ex+2]==28) {line[ey+1][ex+2]=0;}
-    if(line[ey+1][ex-2]==28) {line[ey+1][ex-2]=0;}
+    if(ex<29&&ey<17&&line[ey+1][ex+2]==28) {line[ey+1][ex+2]=0;}
+    if(ey<17&&ex>1&&line[ey+1][ex-2]==28) {line[ey+1][ex-2]=0;}
 
-    if(line[ey][ex+2]==28) {line[ey][ex+2]=0;}
-    if(line[ey][ex-2]==28) {line[ey][ex-2]=0;}
+    if(ex<29&&line[ey][ex+2]==28) {line[ey][ex+2]=0;}
+    if(ex>1&&line[ey][ex-2]==28) {line[ey][ex-2]=0;}
 
-    if(line[ey-1][ex+2]==28) {line[ey-1][ex+2]=0;}
-    if(line[ey-1][ex-2]==28) {line[ey-1][ex-2]=0;}
+    if(ex<29&&ey>0&&line[ey-1][ex+2]==28) {line[ey-1][ex+2]=0;}
+    if(ex>1&&ey>0&&line[ey-1][ex-2]==28) {line[ey-1][ex-2]=0;}
 
-    if(line[ey-2][ex-2]==28) {line[ey-1][ex-2]=0;}
-    if(line[ey-2][ex-1]==28) {line[ey-1][ex-1]=0;}
-    if(line[ey-2][ex]==28)   {line[ey-1][ex]=0;}
-    if(line[ey-2][ex+1]==28) {line[ey-1][ex+1]=0;}
-    if(line[ey-2][ex+2]==28) {line[ey-1][ex+2]=0;}
+    if(ex>1&&ey>1&&line[ey-2][ex-2]==28) {line[ey-1][ex-2]=0;}
+    if(ex>0&&ey>1&&line[ey-2][ex-1]==28) {line[ey-1][ex-1]=0;}
+    if(ey>1&&line[ey-2][ex]==28)   {line[ey-1][ex]=0;}
+    if(ex<30&&ey>1&&line[ey-2][ex+1]==28) {line[ey-1][ex+1]=0;}
+    if(ex<29&&ey>1&&line[ey-2][ex+2]==28) {line[ey-1][ex+2]=0;}
 
     var mx = murphy.x-1;
     var my = murphy.y-1;
@@ -920,7 +923,7 @@ var explode = function(ex,ey)
     if(mx==ex&&  my==ey+1) {murphy.hit=1;}
     if(mx==ex+1&&my==ey+1) {murphy.hit=1;}
 
-      for(var i=0;i<aiCount;i++)
+ for(var i=0;i<aiCount;i++)
   {
     var fx = aiObject[i].x;
     var fy = aiObject[i].y;

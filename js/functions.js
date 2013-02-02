@@ -166,10 +166,10 @@ function fallFunction(i,cx,cy)
           explode(murphy.x-1,murphy.y-1);
         }
       } 
-      if(line[cy+2][cx]==4) {explode(cx,cy+2);}
       fallObject[i].yoffset=0;
       line[cy+1][cx]=fallObject[i].id; // set grid value to 0;
       if(fallObject[i].id==4&&line[cy+2][cx]!==0&&line[cy+2][cx]!==9&&(line[cy+2][cx]<80||line[cy+2][cx]>114)){fallObject[i].x=-1;explode(cx,cy+1);}
+      else if(line[cy+2][cx]==4||line[cy+2][cx]==27) {explode(cx,cy+2);}
   }
 }
 
@@ -526,6 +526,11 @@ function aiMove(i)
   var cy = aiObject[i].y;
 
 
+if(aiObject[i].moveDistance<0)
+{
+  aiObject[i].moveDistance++;
+}
+
 if(aiObject[i].move==0){ aiCheckSides(i,cx,cy);}
 
 
@@ -553,7 +558,7 @@ if(aiObject[i].moveDistance==0&&line[cy+1][cx]!==0&&line[cy-1][cx]!==0&&line[cy]
   //AI Advace depending on new direction
 if(aiObject[i].move==1)
   {
-  if(aiObject[i].moveDistance<9)
+  if(aiObject[i].moveDistance<=9)
     {
     if(line[cy+1][cx]!==28&&line[cy-1][cx]!==28&&line[cy][cx+1]!==28&&line[cy][cx-1]!==28&&line[cy+1][cx]!==0&&line[cy-1][cx]!==0&&line[cy][cx+1]!==0&&line[cy][cx-1]!==0&&line[cy+1][cx]!==9&&line[cy-1][cx]!==9&&line[cy][cx+1]!==9&&line[cy][cx-1]!==9)
     {
@@ -562,10 +567,10 @@ if(aiObject[i].move==1)
       aiObject[i].moveDistance++;
       switch (aiObject[i].direction)
       {
-        case 1: {aiObject[i].yoffset-=moveSpeed;if(line[cy-1][cx]==9){explode(cx,cy-1);}line[cy-1][cx]=28;break;}
-        case 2: {aiObject[i].xoffset+=moveSpeed;if(line[cy][cx+1]==9){explode(cx+1,cy);}line[cy][cx+1]=28;break;}
-        case 3: {aiObject[i].yoffset+=moveSpeed;if(line[cy+1][cx]==9){explode(cx,cy+1);}line[cy+1][cx]=28;break;}
-        case 4: {aiObject[i].xoffset-=moveSpeed;if(line[cy][cx-1]==9){explode(cx-1,cy);}line[cy][cx-1]=28;break;}
+        case 1: {aiObject[i].yoffset-=moveSpeed;if(line[cy-1][cx]==9&&murphy_distance<4){explode(cx,cy-1);}line[cy-1][cx]=28;break;}
+        case 2: {aiObject[i].xoffset+=moveSpeed;if(line[cy][cx+1]==9&&murphy_distance<4){explode(cx+1,cy);}line[cy][cx+1]=28;break;}
+        case 3: {aiObject[i].yoffset+=moveSpeed;if(line[cy+1][cx]==9&&murphy_distance<4){explode(cx,cy+1);}line[cy+1][cx]=28;break;}
+        case 4: {aiObject[i].xoffset-=moveSpeed;if(line[cy][cx-1]==9&&murphy_distance<4){explode(cx-1,cy);}line[cy][cx-1]=28;break;}
       }
     }
     else
