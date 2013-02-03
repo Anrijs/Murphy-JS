@@ -368,6 +368,7 @@ function functionMurphyPush(i)
           }
         }
       }
+      else if ((line[my+1][mx]==32||line[my+1][mx]==36||line[my+1][mx]==38)&&line[my+2][mx]==0){murphy_port=1;}
       else {murphy_move=0;murphy_distance=0;}
     }
     
@@ -382,6 +383,7 @@ function functionMurphyPush(i)
           }
         }
       }
+      else if ((line[my-1][mx]==35||line[my-1][mx]==36||line[my-1][mx]==38)&&line[my-2][mx]==0){murphy_port=1;}
       else {murphy_move=0;murphy_distance=0;}
     }
 
@@ -412,6 +414,7 @@ function functionMurphyPush(i)
           }
         }
       }
+      else if ((line[my][mx+1]==34||line[my][mx+1]==37||line[my][mx+1]==38)&&line[my][mx+2]==0){murphy_port=1;}
       else
       {
         murphy_move=0;
@@ -445,6 +448,7 @@ function functionMurphyPush(i)
           }
         }
       }
+      else if ((line[my][mx-1]==33||line[my][mx-1]==37||line[my][mx-1]==38)&&line[my][mx-2]==0){murphy_port=1;}
       else
       {
         murphy_move=0;
@@ -462,10 +466,10 @@ function functionMurphyMove()
       murphy_distance++;
       switch (murphy_direction)
       {
-        case 1: {murphy.yoffset-=moveSpeed; break;}
-        case 2: {murphy.yoffset+=moveSpeed; break;}
-        case 3: {murphy.xoffset-=moveSpeed; break;}
-        case 4: {murphy.xoffset+=moveSpeed; break;}
+        case 1: {murphy.yoffset-=moveSpeed;if(murphy_port==1){murphy.yoffset-=moveSpeed;} break;}
+        case 2: {murphy.yoffset+=moveSpeed;if(murphy_port==1){murphy.yoffset+=moveSpeed;} break;}
+        case 3: {murphy.xoffset-=moveSpeed;if(murphy_port==1){murphy.xoffset-=moveSpeed;} break;}
+        case 4: {murphy.xoffset+=moveSpeed;if(murphy_port==1){murphy.xoffset+=moveSpeed;} break;}
       }
     }
     else
@@ -489,6 +493,7 @@ function functionMurphyMove()
         {
           redDisks++;
         }
+        murphy_port=0;
       line[murphy.y-1][murphy.x-1]=9;
       murphy.xoffset = 0;
       murphy.yoffset = 0;

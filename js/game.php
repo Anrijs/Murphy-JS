@@ -28,7 +28,7 @@ while($i<$totalLevels+1)
   echo "var totalLevels=".$totalLevels;
 ?>
 
- var version = 'Alpha v1.5pre1';
+ var version = 'Beta v1.0';
 
 var murphy = [];
 murphy.x=2;
@@ -56,6 +56,7 @@ var levelsAvaible = <?php echo $levelsAvaible;?> ;
 var diskIsPlanted = 0;
 var diskX=0;
 var diskY=0;
+var murphy_port=0;
 
 var menuFrame = 0;
 
@@ -132,6 +133,7 @@ var loadGame = function(levelID)
   murphy.win=0;
   murphy.isPushing=0;
   collected = 0;
+  murphy_port=0;
   murphy_pull = 0;
   murphy_move = 0;
   murphy_direction = 0;
@@ -571,6 +573,14 @@ ctx.drawImage(bgImage, 0, 0);
         case 24: {ctx.drawImage(hw10Image, j*32,i*32);break;}
         case 25: {ctx.drawImage(hw11Image, j*32,i*32);break;}
     // case 28: {ctx.drawImage(hw11Image, j*32,i*32);break;}
+        case 32: {ctx.drawImage(port_downImage, j*32,i*32);break;}
+        case 33: {ctx.drawImage(port_leftImage, j*32,i*32);break;}
+        case 34: {ctx.drawImage(port_rightImage, j*32,i*32);break;}
+        case 35: {ctx.drawImage(port_upImage, j*32,i*32);break;}
+        case 36: {ctx.drawImage(port_verticalImage, j*32,i*32);break;}
+        case 37: {ctx.drawImage(port_horizontalImage, j*32,i*32);break;}
+        case 38: {ctx.drawImage(port_allImage, j*32,i*32);break;}
+
         case 39: {ctx.drawImage(baseImage, j*32,i*32); var rand=Math.random(); if(rand<0.005){line[i][j]++;}break;}
         case 40: {ctx.drawImage(baseImage, j*32,i*32); var rand=Math.random(); if(rand<0.02){line[i][j]++;}break;}
         case 41: {ctx.drawImage(bug_1Image, j*32,i*32); line[i][j]++;break;}
@@ -877,6 +887,26 @@ ctx.drawImage(bgImage, 0, 0);
 
 
   else if(murphy.hit!==1){ctx.drawImage(murphyImage, ((murphy.x+murphy.xoffset)*32)-32, ((murphy.y+murphy.yoffset)*32)-32);}
+
+  if(murphy_port==1)
+  {
+    for(var i=0;i<19;i++)
+  {
+    for(var j=0;j<32;j++)
+    {
+      switch (line[i][j])
+      {
+        case 32: {ctx.drawImage(port_downImage, j*32,i*32);break;}
+        case 33: {ctx.drawImage(port_leftImage, j*32,i*32);break;}
+        case 34: {ctx.drawImage(port_rightImage, j*32,i*32);break;}
+        case 35: {ctx.drawImage(port_upImage, j*32,i*32);break;}
+        case 36: {ctx.drawImage(port_verticalImage, j*32,i*32);break;}
+        case 37: {ctx.drawImage(port_horizontalImage, j*32,i*32);break;}
+        case 38: {ctx.drawImage(port_allImage, j*32,i*32);break;}
+       }
+     }
+    }
+  }
   
     if(diskIsPlanted==1)
     {
@@ -1120,14 +1150,19 @@ var drawMenu = function ()
 
   ctx.fillStyle = '#f80'
   ctx.font = "20px Courier New Bold";
-  ctx.fillText("Snik-snak?", 240,50);
-  if(menuFrame<2)        {ctx.drawImage(sniksnak_left_0Image, 363, 46);menuFrame++;}
-  else if(menuFrame<4)  {ctx.drawImage(sniksnak_left_3Image, 363, 46);menuFrame++;}
-  else if(menuFrame<8)  {ctx.drawImage(sniksnak_left_2Image, 363, 46);menuFrame++;}
-  else if(menuFrame<11)  {ctx.drawImage(sniksnak_left_1Image, 363, 46);menuFrame++;}
-  else if(menuFrame<14)  {ctx.drawImage(sniksnak_left_2Image, 363, 46);menuFrame++;}
-  else if(menuFrame<17)  {ctx.drawImage(sniksnak_left_3Image, 363, 46);menuFrame++;}
-  else if(menuFrame==17)  {ctx.drawImage(sniksnak_left_3Image, 363, 46);menuFrame=0;}
+  ctx.fillText("Last ob", 240,50);
+  ctx.fillText("bject", 345,50);
+  ctx.font = "12px Courier New Bold";
+  ctx.fillStyle = '#f20'
+  ctx.fillText("Now Beta!", 240,70);
+  ctx.drawImage(port_rightImage, 315, 46)
+// if(menuFrame<2)        {ctx.drawImage(sniksnak_left_0Image, 363, 46);menuFrame++;}
+// else if(menuFrame<4)  {ctx.drawImage(sniksnak_left_3Image, 363, 46);menuFrame++;}
+// else if(menuFrame<8)  {ctx.drawImage(sniksnak_left_2Image, 363, 46);menuFrame++;}
+// else if(menuFrame<11)  {ctx.drawImage(sniksnak_left_1Image, 363, 46);menuFrame++;}
+// else if(menuFrame<14)  {ctx.drawImage(sniksnak_left_2Image, 363, 46);menuFrame++;}
+// else if(menuFrame<17)  {ctx.drawImage(sniksnak_left_3Image, 363, 46);menuFrame++;}
+// else if(menuFrame==17)  {ctx.drawImage(sniksnak_left_3Image, 363, 46);menuFrame=0;}
 
   ctx.fillStyle = '#dd4';
   ctx.font = "16px Helvetica, Bold";

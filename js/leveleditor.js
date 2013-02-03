@@ -139,8 +139,24 @@ var render = function () {
         case 3 : {brush=12;break}
         case 4 : {brush=13;break}
         case 5 : {brush=14;break}
-        case 6 : {brush=31;break}
+        case 6 : {brush=41;break}
         case 7 : {brush=27;break}
+        case 8 : {brush=29;break}
+        default: {brush=0;break;}
+      }
+      brush_y=ly;brush_x=lx;
+    }
+    else if(ly==22&&lx<15)
+    {
+      switch (lx)
+      {
+        case 1 : {brush=32;break}
+        case 2 : {brush=33;break}
+        case 3 : {brush=35;break}
+        case 4 : {brush=34;break}
+        case 5 : {brush=36;break}
+        case 6 : {brush=37;break}
+        case 7 : {brush=38;break}
         default: {brush=0;break;}
       }
       brush_y=ly;brush_x=lx;
@@ -201,8 +217,15 @@ if(48 in keysDown) {brush=0;}
         case 24: {ctx.drawImage(hw10Image, j*32,i*32);break;}
         case 25: {ctx.drawImage(hw11Image, j*32,i*32);break;}
         case 27: {ctx.drawImage(sniksnak_up_0Image, j*32,i*32);break;}
-        case 31: {ctx.drawImage(bug_5Image, j*32,i*32);break;}
-
+        case 29: {ctx.drawImage(electron_0Image, j*32,i*32);break;}
+        case 41: {ctx.drawImage(bug_5Image, j*32,i*32);break;}
+        case 32: {ctx.drawImage(port_downImage, j*32,i*32);break;}
+        case 33: {ctx.drawImage(port_leftImage, j*32,i*32);break;}
+        case 34: {ctx.drawImage(port_rightImage, j*32,i*32);break;}
+        case 35: {ctx.drawImage(port_upImage, j*32,i*32);break;}
+        case 36: {ctx.drawImage(port_verticalImage, j*32,i*32);break;}
+        case 37: {ctx.drawImage(port_horizontalImage, j*32,i*32);break;}
+        case 38: {ctx.drawImage(port_allImage, j*32,i*32);break;}
       }
 
     }
@@ -254,7 +277,7 @@ var getLevel = function()
       requiredInfotrons=totalInfotrons;
     }
 
-  var levelText="requiredInfotrons  = "+requiredInfotrons+";<br/>";;
+  var levelText="requiredInfotrons  = "+requiredInfotrons+";<br/>"+'level_author = "Anrijs"; <br/> level_name = "PlayGround";';
 
   for(var i=0;i<19;i++)
   {

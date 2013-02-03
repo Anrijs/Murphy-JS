@@ -363,3 +363,24 @@ infotron_explosion_6Image.src = "img/infotron_explosion_6.png";
 
 var infotron_explosion_7Image = new Image();
 infotron_explosion_7Image.src = "img/infotron_explosion_7.png";     
+
+var port_upImage = new Image();
+port_upImage.src = "img/port_up.png";
+
+var port_downImage = new Image();
+port_downImage.src = "img/port_down.png";
+
+var port_leftImage = new Image();
+port_leftImage.src = "img/port_left.png";
+
+var port_rightImage = new Image();
+port_rightImage.src = "img/port_right.png";
+
+var port_horizontalImage = new Image();
+port_horizontalImage.src = "img/port_horizontal.png";
+
+var port_verticalImage = new Image();
+port_verticalImage.src = "img/port_vertical.png";
+
+var port_allImage = new Image();
+port_allImage.src = "img/port_all.png";
