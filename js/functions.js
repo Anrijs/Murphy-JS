@@ -143,7 +143,12 @@ function functionFallLeft(i,cx,cy)
 
 function fallFunction(i,cx,cy)
 {
-
+  if(fallObject[i].fallDistance==8)
+  {
+      if(line[cy+2][cx]==29||line[cy+2][cx]==30) {infotron_explode(cx,cy+2);}
+      else if(fallObject[i].id==4&&line[cy+2][cx]!==0&&line[cy+2][cx]!==9&&(line[cy+2][cx]<80||line[cy+2][cx]>183)){fallObject[i].x=-1;explode(cx,cy+1);}
+      else if(line[cy+2][cx]==4||line[cy+2][cx]==27||line[cy+2][cx]==28) {explode(cx,cy+2);}
+  }
   if(fallObject[i].fallDistance<10)
   {
     fallObject[i].yoffset+=fallSpeed;
@@ -168,11 +173,6 @@ function fallFunction(i,cx,cy)
       } 
       fallObject[i].yoffset=0;
       line[cy+1][cx]=fallObject[i].id; // set grid value to 0;
-
-      if(fallObject[i].id==4&&line[cy+2][cx]!==0&&line[cy+2][cx]!==9&&(line[cy+2][cx]<80||line[cy+2][cx]>114)){fallObject[i].x=-1;explode(cx,cy+1);}
-      else if(line[cy+2][cx]==4||line[cy+2][cx]==27||line[cy+2][cx]==28) {explode(cx,cy+2);}
-      else if(line[cy+2][cx]==29||line[cy+2][cx]==30) {infotron_explode(cx,cy+2);}
-
   }
 }
 
@@ -516,6 +516,7 @@ function functionMurphyMove()
 
 function plantDisk(x,y)
 {
+  //alert(line[17][2]);
   diskDelay = Date.now()+1000;
   diskIsPlanted=1;
   diskX=x;
@@ -561,12 +562,13 @@ if(aiObject[i].moveDistance==0&&line[cy+1][cx]!==0&&line[cy-1][cx]!==0&&line[cy]
   //AI Advace depending on new direction
 if(aiObject[i].move==1)
   {
+  //if(line[cy-1][cx]==6){infotron_explode(cx,cy);}
   if(aiObject[i].moveDistance<9)
     {
-    if(line[cy+1][cx]!==28&&line[cy-1][cx]!==28&&line[cy][cx+1]!==28&&line[cy][cx-1]!==28&&line[cy+1][cx]!==0&&line[cy-1][cx]!==0&&line[cy][cx+1]!==0&&line[cy][cx-1]!==0&&line[cy+1][cx]!==9&&line[cy-1][cx]!==9&&line[cy][cx+1]!==9&&line[cy][cx-1]!==9)
-    {
-    aiObject[i].move=0;
-    }
+   // if(line[cy+1][cx]!==28&&line[cy-1][cx]!==28&&line[cy][cx+1]!==28&&line[cy][cx-1]!==28&&line[cy+1][cx]!==0&&line[cy-1][cx]!==0&&line[cy][cx+1]!==0&&line[cy][cx-1]!==0&&line[cy+1][cx]!==9&&line[cy-1][cx]!==9&&line[cy][cx+1]!==9&&line[cy][cx-1]!==9)
+   // {
+   // aiObject[i].move=0;
+   // }
       aiObject[i].moveDistance++;
       if(aiObject[i].id==27)
       {
@@ -653,4 +655,31 @@ var aiCheckSides = function(i,cx,cy)
       break;}
   }
 }
+}
+
+var clearMess = function(i)
+{
+  if(aiObject[i].moveDistance>0)
+  {
+    var cx = aiObject[i].x;
+    var cy = aiObject[i].y;
+    switch(aiObject[i].direction)
+    {
+      case 1: {line[cy-1][cx]=0;break;}
+      case 2: {line[cy][cx+1]=0;break;}
+      case 3: {line[cy+1][cx]=0;break;}
+      case 4: {line[cy][cx-1]=0;break;}
+    }
+  }
+  else if(cx>0&&cx<30&&cy>0&&cy<17)
+  {
+    switch(aiObject[i].direction)
+      {
+        case 1: {if(line[cy-1][cx]==-1){line[cy-1][cx]=0;}break;}
+        case 2: {if(line[cy][cx+1]==-1){line[cy][cx+1]=0;}break;}
+        case 3: {if(line[cy+1][cx]==-1){line[cy+1][cx]=0;}break;}
+        case 4: {if(line[cy][cx-1]==-1){line[cy][cx-1]=0;}break;}
+      }
+  }
+
 }

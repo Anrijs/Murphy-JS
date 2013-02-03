@@ -658,6 +658,7 @@ ctx.drawImage(bgImage, 0, 0);
         case 172: {ctx.drawImage(infotron_explosion_6Image, j*32,i*32);line[i][j]++;break;}
         case 173: {ctx.drawImage(infotron_explosion_7Image, j*32,i*32);line[i][j]++;break;}
         case 174: {ctx.drawImage(infotron_explosion_7Image, j*32,i*32);line[i][j]=6;
+                   if(line[i+1][j]==-1){line[i+1][j]=0;}
                    fallObject[objCount] = new fallObj;
                    fallObject[objCount].id=6;
                    fallObject[objCount].x=j;
@@ -948,27 +949,6 @@ setInterval(main,1000/40);
 
 var explode = function(ex,ey)
 { 
-    if(ey<16&&ex>1&&line[ey+2][ex-2]==28) {line[ey+2][ex-2]=0;}
-    if(ey<16&&ex>0&&line[ey+2][ex-1]==28) {line[ey+2][ex-1]=0;}
-    if(ey<16&&line[ey+2][ex]==28)   {line[ey+2][ex]=0;}
-    if(ex<30&&ey<16&&line[ey+2][ex+1]==28) {line[ey+2][ex+1]=0;}
-    if(ex<29&&ey<16&&line[ey+2][ex+2]==28) {line[ey+2][ex+2]=0;}
-
-    if(ex<29&&ey<17&&line[ey+1][ex+2]==28) {line[ey+1][ex+2]=0;}
-    if(ey<17&&ex>1&&line[ey+1][ex-2]==28) {line[ey+1][ex-2]=0;}
-
-    if(ex<29&&line[ey][ex+2]==28) {line[ey][ex+2]=0;}
-    if(ex>1&&line[ey][ex-2]==28) {line[ey][ex-2]=0;}
-
-    if(ex<29&&ey>0&&line[ey-1][ex+2]==28) {line[ey-1][ex+2]=0;}
-    if(ex>1&&ey>0&&line[ey-1][ex-2]==28) {line[ey-1][ex-2]=0;}
-
-    if(ex>1&&ey>1&&line[ey-2][ex-2]==28) {line[ey-1][ex-2]=0;}
-    if(ex>0&&ey>1&&line[ey-2][ex-1]==28) {line[ey-1][ex-1]=0;}
-    if(ey>1&&line[ey-2][ex]==28)   {line[ey-1][ex]=0;}
-    if(ex<30&&ey>1&&line[ey-2][ex+1]==28) {line[ey-1][ex+1]=0;}
-    if(ex<29&&ey>1&&line[ey-2][ex+2]==28) {line[ey-1][ex+2]=0;}
-
     var mx = murphy.x-1;
     var my = murphy.y-1;
     if(mx==ex-1&&my==ey-1) {murphy.hit=1;}
@@ -987,15 +967,15 @@ var explode = function(ex,ey)
   {
     var fx = aiObject[i].x;
     var fy = aiObject[i].y;
-    if(fx==ex-1&&fy==ey-1)  {aiObject[i].x=-2;}
-    if(fx==ex&&fy==ey-1  )  {aiObject[i].x=-2;}
-    if(fx==ex+1&&fy==ey-1)  {aiObject[i].x=-2;}                                       
-    if(fx==ex-1&&fy==ey  )  {aiObject[i].x=-2;}
-    if(fx==ex&&fy==ey)      {aiObject[i].x=-2;} 
-    if(fx==ex+1&&fy==ey  )  {aiObject[i].x=-2;}                                        
-    if(fx==ex-1&&fy==ey+1)  {aiObject[i].x=-2;}
-    if(fx==ex&&fy==ey+1  )  {aiObject[i].x=-2;}
-    if(fx==ex+1&&fy==ey+1)  {aiObject[i].x=-2;}
+    if(fx==ex-1&&fy==ey-1)  {clearMess(i);aiObject[i].x=-2;}
+    if(fx==ex&&fy==ey-1  )  {clearMess(i);aiObject[i].x=-2;}
+    if(fx==ex+1&&fy==ey-1)  {clearMess(i);aiObject[i].x=-2;}                                       
+    if(fx==ex-1&&fy==ey  )  {clearMess(i);aiObject[i].x=-2;}
+    if(fx==ex&&fy==ey)      {clearMess(i);aiObject[i].x=-2;} 
+    if(fx==ex+1&&fy==ey  )  {clearMess(i);aiObject[i].x=-2;}                                        
+    if(fx==ex-1&&fy==ey+1)  {clearMess(i);aiObject[i].x=-2;}
+    if(fx==ex&&fy==ey+1  )  {clearMess(i);aiObject[i].x=-2;}
+    if(fx==ex+1&&fy==ey+1)  {clearMess(i);aiObject[i].x=-2;}
   }
 
   for(var i=0;i<objCount;i++)
@@ -1052,27 +1032,6 @@ if((line[ey+1][ex+1]>109||line[ey+1][ex+1]<15||line[ey+1][ex+1]==28||(line[ey+1]
 
 var infotron_explode = function(ex,ey)
 { 
-    if(ey<16&&ex>1&&line[ey+2][ex-2]==28) {line[ey+2][ex-2]=0;}
-    if(ey<16&&ex>0&&line[ey+2][ex-1]==28) {line[ey+2][ex-1]=0;}
-    if(ey<16&&line[ey+2][ex]==28)   {line[ey+2][ex]=0;}
-    if(ex<30&&ey<16&&line[ey+2][ex+1]==28) {line[ey+2][ex+1]=0;}
-    if(ex<29&&ey<16&&line[ey+2][ex+2]==28) {line[ey+2][ex+2]=0;}
-
-    if(ex<29&&ey<17&&line[ey+1][ex+2]==28) {line[ey+1][ex+2]=0;}
-    if(ey<17&&ex>1&&line[ey+1][ex-2]==28) {line[ey+1][ex-2]=0;}
-
-    if(ex<29&&line[ey][ex+2]==28) {line[ey][ex+2]=0;}
-    if(ex>1&&line[ey][ex-2]==28) {line[ey][ex-2]=0;}
-
-    if(ex<29&&ey>0&&line[ey-1][ex+2]==28) {line[ey-1][ex+2]=0;}
-    if(ex>1&&ey>0&&line[ey-1][ex-2]==28) {line[ey-1][ex-2]=0;}
-
-    if(ex>1&&ey>1&&line[ey-2][ex-2]==28) {line[ey-1][ex-2]=0;}
-    if(ex>0&&ey>1&&line[ey-2][ex-1]==28) {line[ey-1][ex-1]=0;}
-    if(ey>1&&line[ey-2][ex]==28)   {line[ey-1][ex]=0;}
-    if(ex<30&&ey>1&&line[ey-2][ex+1]==28) {line[ey-1][ex+1]=0;}
-    if(ex<29&&ey>1&&line[ey-2][ex+2]==28) {line[ey-1][ex+2]=0;}
-
     var mx = murphy.x-1;
     var my = murphy.y-1;
     if(mx==ex-1&&my==ey-1) {murphy.hit=1;}
@@ -1091,15 +1050,15 @@ var infotron_explode = function(ex,ey)
   {
     var fx = aiObject[i].x;
     var fy = aiObject[i].y;
-    if(fx==ex-1&&fy==ey-1)  {aiObject[i].x=-2;}
-    if(fx==ex&&fy==ey-1  )  {aiObject[i].x=-2;}
-    if(fx==ex+1&&fy==ey-1)  {aiObject[i].x=-2;}                                       
-    if(fx==ex-1&&fy==ey  )  {aiObject[i].x=-2;}
-    if(fx==ex&&fy==ey)      {aiObject[i].x=-2;} 
-    if(fx==ex+1&&fy==ey  )  {aiObject[i].x=-2;}                                        
-    if(fx==ex-1&&fy==ey+1)  {aiObject[i].x=-2;}
-    if(fx==ex&&fy==ey+1  )  {aiObject[i].x=-2;}
-    if(fx==ex+1&&fy==ey+1)  {aiObject[i].x=-2;}
+    if(fx==ex-1&&fy==ey-1)  {clearMess(i);aiObject[i].x=-2;}
+    if(fx==ex&&fy==ey-1  )  {clearMess(i);aiObject[i].x=-2;}
+    if(fx==ex+1&&fy==ey-1)  {clearMess(i);aiObject[i].x=-2;}                                       
+    if(fx==ex-1&&fy==ey  )  {clearMess(i);aiObject[i].x=-2;}
+    if(fx==ex&&fy==ey)      {clearMess(i);aiObject[i].x=-2;} 
+    if(fx==ex+1&&fy==ey  )  {clearMess(i);aiObject[i].x=-2;}                                        
+    if(fx==ex-1&&fy==ey+1)  {clearMess(i);aiObject[i].x=-2;}
+    if(fx==ex&&fy==ey+1  )  {clearMess(i);aiObject[i].x=-2;}
+    if(fx==ex+1&&fy==ey+1)  {clearMess(i);aiObject[i].x=-2;}
   }
 
   for(var i=0;i<objCount;i++)
@@ -1136,7 +1095,7 @@ if((line[ey  ][ex+1]>109||line[ey  ][ex+1]<15||line[ey  ][ex+1]==28||(line[ey  ]
   else if(line[ey  ][ex+1]==7||line[ey  ][ex+1]==4||line[ey  ][ex+1]==27||line[ey  ][ex+1]==29)   {line[ey  ][ex+1]=140;}
   
 if((line[ey+1][ex-1]>109||line[ey+1][ex-1]<15||line[ey+1][ex-1]==28||(line[ey+1][ex-1]>25&&line[ey+1][ex-1]<41))&&line[ey+1][ex-1]!==27&&line[ey+1][ex-1]!==29&&line[ey+1][ex-1]!==7&&line[ey+1][ex-1]!==4&&(line[ey+1][ex-1]>153||line[ey+1][ex-1]<140))   {line[ey+1][ex-1]=161;}
-  else if(line[ey+1][ex-1]==7||line[ey+1][ex-1]==4||line[ey+1][ex-1]==2||line[ey+1][ex-1]==9)   {line[ey+1][ex-1]=140;}
+  else if(line[ey+1][ex-1]==7||line[ey+1][ex-1]==4||line[ey+1][ex-1]==27||line[ey+1][ex-1]==29)   {line[ey+1][ex-1]=140;}
   
 if((line[ey+1][ex  ]>109||line[ey+1][ex  ]<15||line[ey+1][ex  ]==28||(line[ey+1][ex  ]>25&&line[ey+1][ex  ]<41))&&line[ey+1][ex  ]!==27&&line[ey+1][ex  ]!==29&&line[ey+1][ex  ]!==7&&line[ey+1][ex  ]!==4&&(line[ey+1][ex  ]>153||line[ey+1][ex  ]<140))   {line[ey+1][ex]=  161;}
   else if(line[ey+1][ex  ]==7||line[ey+1][ex  ]==4||line[ey+1][ex  ]==27||line[ey+1][ex  ]==29)   {line[ey+1][ex]=  140;}
@@ -1327,3 +1286,4 @@ var drawBSOD   = function ()
 // 80..93:explosion to new explosion
 // 101..114: Explosion
 // 121..134: Exit
+
