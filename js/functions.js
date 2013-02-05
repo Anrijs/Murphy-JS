@@ -95,7 +95,7 @@ if(fallObject[i].fallDistance<9)
 
 function functionFallRight(i,cx,cy)
 {
-  if((fallObject[i].fallDistance>=4&&line[cy+1][cx+1]!==0)||line[cy-1][cx-1]==-1)
+  if(fallObject[i].fallDistance>=4&&(line[cy+1][cx+1]!==0||line[cy-1][cx-1]==-1))
           {
             //wait;
            // line[cy][cx]=-1;
@@ -107,7 +107,7 @@ function functionFallRight(i,cx,cy)
         }
         else
         {
-          line[cy+1][cx+1]=0;
+          //line[cy+1][cx+1]=0;
           line[cy][cx+1]=fallObject[i].id;
           fallObject[i].fallDistance=0;
           fallObject[i].x++;
@@ -119,7 +119,7 @@ function functionFallRight(i,cx,cy)
 
 function functionFallLeft(i,cx,cy)
 {
- if((fallObject[i].fallDistance>=4&&line[cy+1][cx-1]!==0)||line[cy-1][cx+1]==-1)
+ if(fallObject[i].fallDistance>=4&&(line[cy+1][cx-1]!==0||line[cy-1][cx+1]==-1))
           {
             //wait;
             //line[cy][cx]=-1;
@@ -131,7 +131,7 @@ function functionFallLeft(i,cx,cy)
         }
          else
         {
-          line[cy+1][cx-1]=0;
+          //line[cy+1][cx-1]=0;
           line[cy][cx-1]=fallObject[i].id;
           fallObject[i].fallDistance=0;
           fallObject[i].x--;
@@ -143,13 +143,17 @@ function functionFallLeft(i,cx,cy)
 
 function fallFunction(i,cx,cy)
 {
-  if(fallObject[i].fallDistance==8)
+  if(fallObject[i].fallDistance>1)
   {
-      if(line[cy+2][cx]==29||line[cy+2][cx]==30) {infotron_explode(cx,cy+2);}
-      else if(fallObject[i].id==4&&line[cy+2][cx]!==0&&line[cy+2][cx]!==9&&(line[cy+2][cx]<80||line[cy+2][cx]>183)){fallObject[i].x=-1;explode(cx,cy+1);}
-      else if(line[cy+2][cx]==4||line[cy+2][cx]==27||line[cy+2][cx]==28) {explode(cx,cy+2);}
+      if(line[cy+2][cx]==29||line[cy+2][cx]==30) {infotron_explode(cx,cy+2);fallObject[i].x=-1;line[cy][cx]=0;line[cy+1][cx]=0;line[cy+2][cx]=0;}
+      else if(fallObject[i].id==4&&line[cy+2][cx]!==0&&line[cy+2][cx]!==9&&(line[cy+2][cx]<80||line[cy+2][cx]>183)){fallObject[i].x=-1;explode(cx,cy+2);line[cy][cx]=0;line[cy+1][cx]=0;line[cy+2][cx]=0;}
+      else if(line[cy+2][cx]==4||line[cy+2][cx]==27) {explode(cx,cy+2);fallObject[i].x=-1;line[cy][cx]=0;line[cy+1][cx]=0;line[cy+2][cx]=0;}
   }
-  if(fallObject[i].fallDistance<10)
+  if(line[cy+1][cx]==5||line[cy+1][cx]==0)
+  {
+
+  }
+  else if(fallObject[i].fallDistance<9)
   {
     fallObject[i].yoffset+=fallSpeed;
     fallObject[i].fallDistance++;
@@ -159,8 +163,9 @@ function fallFunction(i,cx,cy)
       var mx = murphy.x-1;
       var my = murphy.y-1;
 
-      line[cy][cx]=0;
+      
       fallObject[i].isFalling=0;
+    //  if(line[cy+2][cx]==27||line[cy+2][cx]==28||line[cy+2][cx]==0||line[cy+2][cx]==29||line[cy+2][cx]==30)  {fallObject[i].isFalling=1;}
       fallObject[i].fallDistance=0;
       fallObject[i].y++;
       if((mx==cx&&(my==cy+1||my==cy+2))&&(line[my][mx+1]!==9||line[my][mx-1]!==9))
@@ -172,6 +177,7 @@ function fallFunction(i,cx,cy)
         }
       } 
       fallObject[i].yoffset=0;
+      line[cy][cx]=0; 
       line[cy+1][cx]=fallObject[i].id; // set grid value to 0;
   }
 }
@@ -179,38 +185,40 @@ function fallFunction(i,cx,cy)
 function getEnvrioment(i,cx,cy)
 {
   if(fallObject[i].isPushed==0&&fallObject[i].isFalling==0&&fallObject[i].gravity==1)
-  {
-    if(line[cy+1][cx]==0) //Get whats below
-    {
-      fallObject[i].isFalling=1;
-      line[cy+1][cx]=-1;
-    }
-    else if(line[cy+1][cx]==5||line[cy+1][cx]==6||line[cy+1][cx]==10||line[cy+1][cx]==11||line[cy+1][cx]==12||line[cy+1][cx]==13||line[cy+1][cx]==14||line[cy+1][cx]==13) //Get whats in sides
+{
+    if(line[cy+1][cx]==5||line[cy+1][cx]==6||line[cy+1][cx]==10||line[cy+1][cx]==11||line[cy+1][cx]==12||line[cy+1][cx]==13||line[cy+1][cx]==14||line[cy+1][cx]==13) //Get whats in sides
     {
       //Check if sides are free
       if(line[cy][cx+1]==0&&line[cy+1][cx+1]==0&&(fallObject[i].id==5||fallObject[i].id==6))    // Right side
       {
         fallObject[i].isPushed=3;
-        line[cy][cx+1]=fallObject[i].id;
+        line[cy][cx+1]=-1;
+        line[cy+1][cx+1]=0;
       }
       else if(line[cy][cx-1]==0&&line[cy+1][cx-1]==0&&(fallObject[i].id==5||fallObject[i].id==6))  //Left side
       {
         fallObject[i].isPushed=4;
-        line[cy][cx-1]=fallObject[i].id;
+        line[cy][cx-1]=-1;
+        line[cy+1][cx-1]=0;
       }
+    }
+    else if(line[cy+1][cx]==0) //Get whats below
+    {
+      fallObject[i].isFalling=1;
+      line[cy+1][cx]=-1;
     }
     
   }
 
-    if(line[cy+1][cx]==0&&fallObject[i].isPushed==0&&fallObject[i].gravity==1)
-    {
-      if(line[cy+1][cx]!==-1&&line[cy+1][cx]==0)
-      {
-        fallObject[i].isFalling=1;
-        line[cy+1][cx]=-1;
-      } // Set object for fall;
-       // set grid value to 0;
-    }
+   // if(line[cy+1][cx]==0&&fallObject[i].isPushed==0&&fallObject[i].gravity==1)
+   // {
+   //   if(line[cy+1][cx]!==-1&&line[cy+1][cx]==0)
+   //   {
+   //     fallObject[i].isFalling=1;
+   //     line[cy+1][cx]=-1;
+   //   } // Set object for fall;
+   //    // set grid value to 0;
+   // }
 }
 function functionMurphyPull(murphy_direction)
 {

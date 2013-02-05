@@ -217,7 +217,7 @@ if(48 in keysDown) {brush=0;}
         case 24: {ctx.drawImage(hw10Image, j*32,i*32);break;}
         case 25: {ctx.drawImage(hw11Image, j*32,i*32);break;}
         case 27: {ctx.drawImage(sniksnak_up_0Image, j*32,i*32);break;}
-        case 29: {ctx.drawImage(electron_0Image, j*32,i*32);break;}
+        case 29: {ctx.drawImage(electrons_0Image, j*32,i*32);break;}
         case 41: {ctx.drawImage(bug_5Image, j*32,i*32);break;}
         case 32: {ctx.drawImage(port_downImage, j*32,i*32);break;}
         case 33: {ctx.drawImage(port_leftImage, j*32,i*32);break;}
@@ -277,7 +277,7 @@ var getLevel = function()
       requiredInfotrons=totalInfotrons;
     }
 
-  var levelText="requiredInfotrons  = "+requiredInfotrons+";<br/>"+'level_author = "Anrijs"; <br/> level_name = "PlayGround";';
+  var levelText="requiredInfotrons  = "+requiredInfotrons+";<br/>"+'level_author = "Anrijs"; <br/> level_name = "PlayGround";<br/>';
 
   for(var i=0;i<19;i++)
   {
@@ -289,6 +289,7 @@ var getLevel = function()
   var day = currentTime.getDate()
   var year = currentTime.getFullYear()
 
+  levelText+='// Toal Infotrons: ' + totalInfotrons + '<br/>';
   levelText+='// Generated with level editor: http://anrijs.jargans.com/murphy/editor.html <br/>';
   levelText+='// Date:' + day + "." + month + "." + year;
 

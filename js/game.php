@@ -12,10 +12,33 @@
 
 
 <?php
-$levelsAvaible=6;
+include"database.config.php";
 
+$host = 'localhost';
+$link = mysql_connect($host,$user,$password);
+if (!$link) {
+    die('Could not connect: ' . mysql_error());
+}
 
-$totalLevels = 6;
+mysql_set_charset('utf8',$link);
+$db_selected = mysql_select_db($database, $link);
+if (!$db_selected) {
+    die ('Can\'t use selected db : ' . mysql_error());
+}
+session_start();
+$name = $_SESSION['name'];
+
+$results = mysql_query("SELECT * FROM `murphy` WHERE `user` LIKE '$name'");
+if(mysql_num_rows($results)<1||$name==NULL)
+{$levelsAvailable=1;$levelToLoad=1;}
+else if ($name!==NULL)
+{
+  $row = mysql_fetch_array($results);
+  $levelsAvailable=$row['levels'];
+  $levelToLoad=$row['levels'];
+}
+
+$totalLevels = 15;
 $levels = "";
 $i=1;
 while($i<$totalLevels+1)
@@ -52,7 +75,7 @@ var murphy_distance = 0;
 var isLoaded = 0;
 var murphy_lastside = 0;
 var terminalBlow = 0;
-var levelsAvaible = <?php echo $levelsAvaible;?> ;
+var levelsAvailable = <?php echo $levelsAvailable;?> ;
 var diskIsPlanted = 0;
 var diskX=0;
 var diskY=0;
@@ -66,7 +89,7 @@ var xCoor;
 var yCoor;
 
 var gameLevel = 1;
-var levelToLoad = 1;
+var levelToLoad = <?php echo $levelToLoad ?>;
 var level_author = "unknown";
 var level_name = "unknown";
 var redDisks = 0;
@@ -233,14 +256,16 @@ for(var i=0;i<19;i++)
 
 }
 
-var canvas = document.createElement("canvas");
+var canvas = document.getElementById("canvas");
 canvas.style.cssText="idtkscale:ScaleAspectFit;";  // CocoonJS extension
 
 var ctx = canvas.getContext("2d");
 canvas.width = 1024;
 canvas.height = 768;
 
-document.body.appendChild(canvas);
+//document.body.appendChild(canvas);
+
+
 
 
  //Create the canvas
@@ -369,8 +394,20 @@ var update = function ()
 {
   if(27 in keysDown)
   {
-    murphy.hit=1;
-    explode(murphy.x-1,murphy.y-1);
+  delete keysDown[27];
+    alert( line[1][5]+' '+line[1][6]+' '+line[1][7]+' '+line[1][8]+' '+line[1][9]+' '+line[1][10]+' '+line[1][11]+' '+line[1][12]+' '+line[1][13]+'\n'+
+           line[2][5]+' '+line[2][6]+' '+line[2][7]+' '+line[2][8]+' '+line[2][9]+' '+line[2][10]+' '+line[2][11]+' '+line[2][12]+' '+line[2][13]+'\n'+
+           line[3][5]+' '+line[3][6]+' '+line[3][7]+' '+line[3][8]+' '+line[3][9]+' '+line[3][10]+' '+line[3][11]+' '+line[3][12]+' '+line[3][13]+'\n'+
+           line[4][5]+' '+line[4][6]+' '+line[4][7]+' '+line[4][8]+' '+line[4][9]+' '+line[4][10]+' '+line[4][11]+' '+line[4][12]+' '+line[4][13]+'\n'+
+           line[5][5]+' '+line[5][6]+' '+line[5][7]+' '+line[5][8]+' '+line[5][9]+' '+line[5][10]+' '+line[5][11]+' '+line[5][12]+' '+line[5][13]+'\n'+
+           line[6][5]+' '+line[6][6]+' '+line[6][7]+' '+line[6][8]+' '+line[6][9]+' '+line[6][10]+' '+line[6][11]+' '+line[6][12]+' '+line[6][13]+'\n'+
+           line[7][5]+' '+line[7][6]+' '+line[7][7]+' '+line[7][8]+' '+line[7][9]+' '+line[7][10]+' '+line[7][11]+' '+line[7][12]+' '+line[7][13]+'\n'+
+           line[8][5]+' '+line[8][6]+' '+line[8][7]+' '+line[8][8]+' '+line[8][9]+' '+line[8][10]+' '+line[8][11]+' '+line[8][12]+' '+line[8][13]
+
+      );
+
+    //murphy.hit=1;
+    //explode(murphy.x-1,murphy.y-1);
   }
   if(murphy_move!==1)
   {
@@ -425,64 +462,11 @@ var render = function () {
 }
 
 //Get envrioment and reserve array elements
-for(var i=0;i<objCount;i++)
-{
-  var cx = fallObject[i].x;
-  var cy = fallObject[i].y;
-  var mx = murphy.x-1;
-  var my = murphy.y-1;
 
-
-  if(fallObject[i].id>=100)  
-  {
-    fallObject[i].id++;
-    if(fallObject[i].id==108){explode(cx,cy);fallObject[i].x=-1;}
-  }
-
-  getEnvrioment(i,cx,cy);  //Set objects for falling or pushing (physics)
-
-    // Start moveing objects!
-    if(fallObject[i].isFalling==1)
-      {
-        fallFunction(i,cx,cy);
-      }
-    // ----- IS PUSHED BY MURPHY
-    else if(fallObject[i].isPushed==1)
-      {
-        functionPushRight(i,cx,cy);
-      }
-    else if(fallObject[i].isPushed==2)
-     {
-        functionPushLeft(i,cx,cy);
-     }
-    else if(fallObject[i].isPushed==5)
-      {
-        functionPushDown(i,cx,cy);
-    }
-    else if(fallObject[i].isPushed==6)
-     {
-        functionPushUp(i,cx,cy);
-    }
-    //----------- PHYSICS FALL
-    else if(fallObject[i].isPushed==3&&line[cy][cx+1]!==9)
-      {
-        functionFallRight(i,cx,cy);
-    }
-    else if(fallObject[i].isPushed==4&&line[cy][cx-1]!==9)
-      {
-       functionFallLeft(i,cx,cy);
-    }
-}
-
-for(var i=0;i<aiCount;i++)
-{
-  aiMove(i);
-}
-
-if(line[murphy.y-1][murphy.x-1]==27||(line[murphy.y-1][murphy.x-1]==28&&murphy_distance<4))
-{
-  explode(murphy.x-1,murphy.y-1);
-}
+//if(line[murphy.y-1][murphy.x-1]==27||(line[murphy.y-1][murphy.x-1]==28&&murphy_distance<4))
+//{
+//  explode(murphy.x-1,murphy.y-1);
+//}
 
 if(murphy_pull==1)
 {
@@ -533,14 +517,66 @@ if(murphy.isPushing!==0)
 
 if(murphy_move==1&&murphy.hit!==1)
 {
-  if((line[my][mx+1]==-1&&murphy_direction==4&&murphy_distance>2)||(line[my][mx-1]==-1&&murphy_direction==3&&murphy_distance>2))
-  {
-    murphy.hit=1;
-    explode(murphy.x-1,murphy.y-1);
-  }
+ // if((line[my][mx+1]==-1&&murphy_direction==4&&murphy_distance>2&&murphy_distance<8)||(line[my][mx-1]==-1&&murphy_direction==3&&murphy_distance>2&&murphy_distance<8))
+ // {
+ //   murphy.hit=1;
+ //   explode(murphy.x-1,murphy.y-1);
+ // }
 
   functionMurphyMove();
 }
+
+for(var i=0;i<objCount;i++)
+{
+  var cx = fallObject[i].x;
+  var cy = fallObject[i].y;
+
+  getEnvrioment(i,cx,cy);  //Set objects for falling or pushing (physics)
+}
+for(var i=0;i<objCount;i++)
+{
+  var cx = fallObject[i].x;
+  var cy = fallObject[i].y;
+
+    // Start moveing objects!
+    if(fallObject[i].isFalling==1)
+      {
+        fallFunction(i,cx,cy);
+      }
+    // ----- IS PUSHED BY MURPHY
+    else if(fallObject[i].isPushed==1)
+      {
+        functionPushRight(i,cx,cy);
+      }
+    else if(fallObject[i].isPushed==2)
+     {
+        functionPushLeft(i,cx,cy);
+     }
+    else if(fallObject[i].isPushed==5)
+      {
+        functionPushDown(i,cx,cy);
+    }
+    else if(fallObject[i].isPushed==6)
+     {
+        functionPushUp(i,cx,cy);
+    }
+    //----------- PHYSICS FALL
+    else if(fallObject[i].isPushed==3&&line[cy][cx+1]!==9)
+      {
+        functionFallRight(i,cx,cy);
+    }
+    else if(fallObject[i].isPushed==4&&line[cy][cx-1]!==9)
+      {
+       functionFallLeft(i,cx,cy);
+    }
+}
+
+for(var i=0;i<aiCount;i++)
+{
+  aiMove(i);
+}
+
+
 
 ctx.drawImage(bgImage, 0, 0);
 
@@ -936,8 +972,8 @@ var main = function ()  {
     if(murphy.win==1)
     {
       murphy.hit=1;
-      if(levelToLoad==levelsAvaible)
-      {levelsAvaible++;}
+      if(levelToLoad==levelsAvailable)
+      {levelsAvailable++;$.post("update_stats.php", {lev: levelsAvailable} );}
       //loadGame(gameLevel); 
     }
       update();
@@ -970,7 +1006,7 @@ for(var i=0;i<19;i++)
   }
 
 };
-setInterval(main,1000/40);
+setInterval(main,1000/100);
 
  // Execute as fast as possible
  //rolls in falling object!
@@ -1218,15 +1254,15 @@ var drawMenu = function ()
   ctx.textAlign = "center";
   //for(var i=1;i<11;i++)
   //{ 
-  // // if(levelsAvaible<i){ctx.fillStyle = '#f00';}
+  // // if(levelsAvailable<i){ctx.fillStyle = '#f00';}
   // // else {ctx.fillStyle = '#fc0';}
   // // ctx.drawImage(blankImage, (i+1)*48,576);
   // // ctx.fillText(i,(i+1)*48+23,576+10);
   //}
 
   ctx.drawImage(selectorImage, 160,544);
-  if(levelToLoad==levelsAvaible){ctx.fillStyle = '#f90';}
-  else if(levelToLoad<levelsAvaible){ctx.fillStyle = '#2e2';}
+  if(levelToLoad==levelsAvailable){ctx.fillStyle = '#f90';}
+  else if(levelToLoad<levelsAvailable){ctx.fillStyle = '#2e2';}
   else {ctx.fillStyle='#e11';}
   ctx.fillText(levelToLoad,254,560);
   ctx.textAlign = "left";
@@ -1242,11 +1278,11 @@ var drawMenu = function ()
 
   if(32 in keysDown|| touchDown==1)
   {
-  if(levelToLoad<=levelsAvaible)
+  if(levelToLoad<=levelsAvailable)
   {
    loadGame(levelToLoad); 
   }
-  else {errorMsg ="You can't play this level! You have to complete level "+levelsAvaible+' first!';}
+  else {errorMsg ="You can't play this level! You have to complete level "+levelsAvailable+' first!';}
   }
 }
 
